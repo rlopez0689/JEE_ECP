@@ -4,23 +4,23 @@ public class Vote {
 	public static final String ID = "ID";
 	private Integer id;
 	
-	public static final String NIVEL_ESTUDIOS = "NIVEL_ESTUDIOS";
-	private String nivel_estudios;
+	public static final String EDUCATION_LEVEL = "EDUCATION_LEVEL";
+	private String education_level;
 	
 	public static final String IP = "IP";
 	private String ip;
 	
-	public static final String NUMERO_VOTOS = "NUMERO_VOTOS";
+	public static final String VOTE_NUMBER = "VOTE_NUMBER";
 	private Integer numero_votos;
 	
-	public static final String TEMA = "TEMA_ID";
-	private Theme tema;
+	public static final String THEME = "THEME_ID";
+	private Theme theme;
 	
 	public String getNivel_estudios() {
-		return nivel_estudios;
+		return education_level;
 	}
 	public void setNivel_estudios(String nivel_estudios) {
-		this.nivel_estudios = nivel_estudios;
+		this.education_level = nivel_estudios;
 	}
 	public String getIp() {
 		return ip;
@@ -35,25 +35,25 @@ public class Vote {
 		this.numero_votos = numero_votos;
 	}
 	public Theme getTema() {
-		return tema;
+		return theme;
 	}
 	public void setTema(Theme tema) {
-		this.tema = tema;
+		this.theme = tema;
 	}
 	
 	@Override
 	public boolean equals(Object obj) {
 		assert obj != null;
         Vote other = (Vote) obj;
-        return id.equals(other.id) && nivel_estudios.equals(other.nivel_estudios)
-                && ip.equals(other.ip) && tema.getId().equals(other.tema.getId())
+        return id.equals(other.id) && education_level.equals(other.education_level)
+                && ip.equals(other.ip) && theme.getId().equals(other.theme.getId())
                 && numero_votos.equals(other.numero_votos);
 	}
 	
 	@Override
 	public String toString() {
-		return "Voto [id=" + id + ", nivel_estudios=" + nivel_estudios
+		return "Voto [id=" + id + ", nivel_estudios=" + education_level
 				+ ", ip=" + ip + ", numero_votos=" + numero_votos + ", tema="
-				+ tema + "]";
+				+ theme + "]";
 	}
 }
