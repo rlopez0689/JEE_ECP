@@ -56,4 +56,5 @@ public class Vote {
 				+ ", ip=" + ip + ", numero_votos=" + numero_votos + ", tema="
 				+ theme + "]";
 	}
+	
 }
