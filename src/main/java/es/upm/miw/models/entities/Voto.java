@@ -14,7 +14,7 @@ public class Voto {
 	private Integer numero_votos;
 	
 	public static final String TEMA = "TEMA_ID";
-	private Tema tema;
+	private Theme tema;
 	
 	public String getNivel_estudios() {
 		return nivel_estudios;
@@ -34,10 +34,10 @@ public class Voto {
 	public void setNumero_votos(int numero_votos) {
 		this.numero_votos = numero_votos;
 	}
-	public Tema getTema() {
+	public Theme getTema() {
 		return tema;
 	}
-	public void setTema(Tema tema) {
+	public void setTema(Theme tema) {
 		this.tema = tema;
 	}
 	

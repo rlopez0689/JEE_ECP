@@ -3,7 +3,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 
 @Entity
-public class Tema {
+public class Theme {
 	
 	public static final String TABLE = "tema";
 	
@@ -17,13 +17,13 @@ public class Tema {
 	public static final String NAME = "name";
 	private String name;
 	
-	public Tema(Integer id, String question, String name){
+	public Theme(Integer id, String question, String name){
 		this.id = id;
 		this.question = question;
 		this.name = name;
 	}
 	
-	public Tema(){}
+	public Theme(){}
 	
 	public Integer getId() {
 		return id;
@@ -47,7 +47,7 @@ public class Tema {
 	@Override
 	public boolean equals(Object obj) {
 		assert obj != null;
-        Tema other = (Tema) obj;
+        Theme other = (Theme) obj;
         return id.equals(other.id) && name.equals(other.name)
                 && question.equals(other.question);
 	}
