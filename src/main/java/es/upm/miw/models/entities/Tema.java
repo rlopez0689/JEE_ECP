@@ -1,10 +1,14 @@
 package es.upm.miw.models.entities;
+import javax.persistence.Entity;
+import javax.persistence.Id;
 
+@Entity
 public class Tema {
 	
 	public static final String TABLE = "tema";
 	
 	public static final String ID = "ID";	
+	@Id
 	private Integer id;
 	
 	public static final String Question = "QUESTION";
@@ -13,7 +17,8 @@ public class Tema {
 	public static final String NAME = "name";
 	private String name;
 	
-	public Tema(String question, String name){
+	public Tema(Integer id, String question, String name){
+		this.id = id;
 		this.question = question;
 		this.name = name;
 	}
