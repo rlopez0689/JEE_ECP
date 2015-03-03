@@ -1,7 +1,7 @@
 package es.upm.miw.models.daos;
 
-import es.upm.miw.models.entities.Voto;
+import es.upm.miw.models.entities.Vote;
 
-public interface VotoDao extends GenericDao<Voto, Integer> {
+public interface VotoDao extends GenericDao<Vote, Integer> {
 
 }

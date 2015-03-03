@@ -1,6 +1,6 @@
 package es.upm.miw.models.entities;
 
-public class Voto {
+public class Vote {
 	public static final String ID = "ID";
 	private Integer id;
 	
@@ -44,7 +44,7 @@ public class Voto {
 	@Override
 	public boolean equals(Object obj) {
 		assert obj != null;
-        Voto other = (Voto) obj;
+        Vote other = (Vote) obj;
         return id.equals(other.id) && nivel_estudios.equals(other.nivel_estudios)
                 && ip.equals(other.ip) && tema.getId().equals(other.tema.getId())
                 && numero_votos.equals(other.numero_votos);
