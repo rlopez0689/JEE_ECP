@@ -1,4 +1,4 @@
-package es.upm.miw.models.daos;
+package es.upm.miw.persistence.models.daos;
 
 import java.util.List;
 

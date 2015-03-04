@@ -1,4 +1,4 @@
-package es.upm.persistence.jpa;
+package es.upm.miw.persistence.jpa;
 
 import java.util.HashMap;
 import java.util.Map;

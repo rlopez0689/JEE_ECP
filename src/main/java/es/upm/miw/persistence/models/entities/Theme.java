@@ -1,4 +1,4 @@
-package es.upm.miw.models.entities;
+package es.upm.miw.persistence.models.entities;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;

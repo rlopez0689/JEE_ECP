@@ -1,13 +1,13 @@
-package es.upm.miw.models.daos.jpa;
+package es.upm.miw.persistence.models.daos.jpa;
 
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
 import org.apache.logging.log4j.LogManager;
 
-import es.upm.miw.models.daos.ThemeDao;
-import es.upm.miw.models.daos.VoteDao;
-import es.upm.miw.models.daos.DaoFactory;
+import es.upm.miw.persistence.models.daos.DaoFactory;
+import es.upm.miw.persistence.models.daos.ThemeDao;
+import es.upm.miw.persistence.models.daos.VoteDao;
 
 public class DaoJpaFactory extends DaoFactory {
     private static final String PERSISTENCE_UNIT = "tictactoe";

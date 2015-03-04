@@ -1,7 +1,7 @@
-package es.upm.miw.models.daos;
+package es.upm.miw.persistence.models.daos;
 
-import es.upm.miw.models.daos.ThemeDao;
-import es.upm.miw.models.daos.VoteDao;
+import es.upm.miw.persistence.models.daos.ThemeDao;
+import es.upm.miw.persistence.models.daos.VoteDao;
 
 public abstract class DaoFactory {
     public static DaoFactory factory = null;

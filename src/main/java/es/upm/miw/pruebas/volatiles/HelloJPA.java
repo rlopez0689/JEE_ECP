@@ -8,9 +8,9 @@ import javax.persistence.Persistence;
 
 import org.eclipse.persistence.config.PersistenceUnitProperties;
 
-import es.upm.miw.models.entities.Theme;
-import es.upm.miw.models.entities.Vote;
-import es.upm.miw.models.utils.EducationLevel;
+import es.upm.miw.persistence.models.entities.Theme;
+import es.upm.miw.persistence.models.entities.Vote;
+import es.upm.miw.persistence.models.utils.EducationLevel;
 
 public class HelloJPA {
     public static void main(String[] args) {

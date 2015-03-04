@@ -1,4 +1,4 @@
-package es.upm.miw.models.daos.jpa;
+package es.upm.miw.persistence.models.daos.jpa;
 
 import java.util.List;
 
@@ -10,9 +10,9 @@ import javax.persistence.criteria.Root;
 
 import org.apache.logging.log4j.LogManager;
 
-import es.upm.miw.models.daos.GenericDao;
-import es.upm.miw.models.daos.jpa.DaoJpaFactory;
-import es.upm.miw.models.daos.jpa.GenericDaoJpa;
+import es.upm.miw.persistence.models.daos.GenericDao;
+import es.upm.miw.persistence.models.daos.jpa.DaoJpaFactory;
+import es.upm.miw.persistence.models.daos.jpa.GenericDaoJpa;
 
 public class GenericDaoJpa<T, ID> implements GenericDao<T, ID> {
     private Class<T> persistentClass;

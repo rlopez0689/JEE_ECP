@@ -1,4 +1,4 @@
-package es.upm.miw.models.entities;
+package es.upm.miw.persistence.models.entities;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -7,7 +7,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
-import es.upm.miw.models.utils.EducationLevel;
+import es.upm.miw.persistence.models.utils.EducationLevel;
 
 @Entity
 public class Vote {

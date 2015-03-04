@@ -1,4 +1,4 @@
-package es.upm.miw.models.utils;
+package es.upm.miw.persistence.models.utils;
 
 public enum EducationLevel {
 	    MIDDLESCHOOL,HIGHSCHOOL, ASSOCITEDEGREE, BACHELORDEGREE, 
