@@ -21,7 +21,7 @@ public class HelloJPA {
                 .createEntityManager();
         
         Theme u1 = new Theme("ÀEsta es una pregunta?", "Tema de prueba");
-        Vote v1 = new Vote("Universidad", "127.0.0.1", 3, u1);
+        Vote v1 = new Vote("Universidad", "127.0.0.1", u1);
         // Create
         em.getTransaction().begin();
         em.persist(u1);

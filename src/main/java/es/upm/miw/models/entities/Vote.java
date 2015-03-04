@@ -5,7 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Vote {
@@ -21,19 +21,15 @@ public class Vote {
 	public static final String IP = "IP";
 	private String ip;
 	
-	public static final String VOTE_NUMBER = "VOTE_NUMBER";
-	private Integer numero_votos;
-	
 	public static final String THEME = "THEME_ID";
 	
-	@OneToOne(cascade = CascadeType.ALL)
+	@ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn
 	private Theme theme;
 	
-	public Vote(String el, String ip, Integer nv, Theme th){
+	public Vote(String el, String ip, Theme th){
 		this.education_level=el;
 		this.ip=ip;
-		this.numero_votos=nv;
 		this.theme=th;
 	}
 	
@@ -51,12 +47,6 @@ public class Vote {
 	public void setIp(String ip) {
 		this.ip = ip;
 	}
-	public Integer getNumero_votos() {
-		return numero_votos;
-	}
-	public void setNumero_votos(int numero_votos) {
-		this.numero_votos = numero_votos;
-	}
 	public Theme getTema() {
 		return theme;
 	}
@@ -69,14 +59,12 @@ public class Vote {
 		assert obj != null;
         Vote other = (Vote) obj;
         return id.equals(other.id) && education_level.equals(other.education_level)
-                && ip.equals(other.ip) && theme.getId().equals(other.theme.getId())
-                && numero_votos.equals(other.numero_votos);
+                && ip.equals(other.ip) && theme.getId().equals(other.theme.getId());
 	}
 	
 	@Override
 	public String toString() {
 		return "Voto [id=" + id + ", nivel_estudios=" + education_level
-				+ ", ip=" + ip + ", numero_votos=" + numero_votos + ", tema="
-				+ theme + "]";
+				+ ", ip=" + ip + ", tema="+ theme + "]";
 	}	
 }
