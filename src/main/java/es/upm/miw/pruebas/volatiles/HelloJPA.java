@@ -19,18 +19,18 @@ public class HelloJPA {
         EntityManager em = Persistence.createEntityManagerFactory("JEE_ECP", properties)
                 .createEntityManager();
         
-        Theme u1 = new Theme(1,"ÀEsta es una pregunta?", "Tema de prueba");
+        Theme u1 = new Theme("ÀEsta es una pregunta?", "Tema de prueba");
         // Create
         em.getTransaction().begin();
         em.persist(u1);
-        em.persist(new Theme(2,"ÀPreguntas de deportes?", "Deportes"));
-        em.persist(new Theme(3, "ÀPregunta de musica?", "Musica"));
+        em.persist(new Theme("ÀPreguntas de deportes?", "Deportes"));
+        em.persist(new Theme("ÀPregunta de musica?", "Musica"));
         em.getTransaction().commit();
         // Read
         System.out.println(em.find(Theme.class, 1));
         // Update
         em.getTransaction().begin();
-        em.merge(new Theme(2,"ÀPreguntas de tecnologia?", "dos cambiado con update"));
+        em.merge(new Theme("ÀPreguntas de tecnologia?", "dos cambiado con update"));
         em.getTransaction().commit();
         // Update2
         em.getTransaction().begin();

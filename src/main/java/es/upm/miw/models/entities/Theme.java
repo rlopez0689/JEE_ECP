@@ -1,5 +1,6 @@
 package es.upm.miw.models.entities;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 @Entity
@@ -8,7 +9,9 @@ public class Theme {
 	public static final String TABLE = "tema";
 	
 	public static final String ID = "ID";	
+	
 	@Id
+    @GeneratedValue
 	private Integer id;
 	
 	public static final String Question = "QUESTION";
@@ -17,8 +20,7 @@ public class Theme {
 	public static final String NAME = "name";
 	private String name;
 	
-	public Theme(Integer id, String question, String name){
-		this.id = id;
+	public Theme(String question, String name){
 		this.question = question;
 		this.name = name;
 	}
