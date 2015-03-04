@@ -42,4 +42,5 @@ public class HelloJPA {
         em.remove(u3);
         em.getTransaction().commit();
     }
+    
 }
