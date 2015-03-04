@@ -10,6 +10,7 @@ import org.eclipse.persistence.config.PersistenceUnitProperties;
 
 import es.upm.miw.models.entities.Theme;
 import es.upm.miw.models.entities.Vote;
+import es.upm.miw.models.utils.EducationLevel;
 
 public class HelloJPA {
     public static void main(String[] args) {
@@ -21,7 +22,7 @@ public class HelloJPA {
                 .createEntityManager();
         
         Theme u1 = new Theme("ÀEsta es una pregunta?", "Tema de prueba");
-        Vote v1 = new Vote("Universidad", "127.0.0.1", u1);
+        Vote v1 = new Vote(EducationLevel.MASTERSDEGREE, "127.0.0.1", u1);
         // Create
         em.getTransaction().begin();
         em.persist(u1);

@@ -7,6 +7,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import es.upm.miw.models.utils.EducationLevel;
+
 @Entity
 public class Vote {
 	public static final String ID = "ID";
@@ -16,7 +18,7 @@ public class Vote {
 	private Integer id;
 	
 	public static final String EDUCATION_LEVEL = "EDUCATION_LEVEL";
-	private String education_level;
+	private EducationLevel education_level;
 	
 	public static final String IP = "IP";
 	private String ip;
@@ -27,7 +29,7 @@ public class Vote {
     @JoinColumn
 	private Theme theme;
 	
-	public Vote(String el, String ip, Theme th){
+	public Vote(EducationLevel el, String ip, Theme th){
 		this.education_level=el;
 		this.ip=ip;
 		this.theme=th;
@@ -35,10 +37,10 @@ public class Vote {
 	
 	public Vote(){}
 	
-	public String getNivel_estudios() {
+	public EducationLevel getNivel_estudios() {
 		return education_level;
 	}
-	public void setNivel_estudios(String nivel_estudios) {
+	public void setNivel_estudios(EducationLevel nivel_estudios) {
 		this.education_level = nivel_estudios;
 	}
 	public String getIp() {
