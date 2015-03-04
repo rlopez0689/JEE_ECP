@@ -78,6 +78,5 @@ public class Vote {
 		return "Voto [id=" + id + ", nivel_estudios=" + education_level
 				+ ", ip=" + ip + ", numero_votos=" + numero_votos + ", tema="
 				+ theme + "]";
-	}
-	
+	}	
 }
