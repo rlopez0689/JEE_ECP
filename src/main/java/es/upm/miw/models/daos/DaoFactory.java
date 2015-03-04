@@ -18,4 +18,5 @@ public abstract class DaoFactory {
     public abstract ThemeDao getUserDao();
 
     public abstract VoteDao getCategoryDao();
+    
 }
