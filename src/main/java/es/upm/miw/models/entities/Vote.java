@@ -1,7 +1,18 @@
 package es.upm.miw.models.entities;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
+
+@Entity
 public class Vote {
 	public static final String ID = "ID";
+	
+	@Id
+    @GeneratedValue
 	private Integer id;
 	
 	public static final String EDUCATION_LEVEL = "EDUCATION_LEVEL";
@@ -14,7 +25,19 @@ public class Vote {
 	private Integer numero_votos;
 	
 	public static final String THEME = "THEME_ID";
+	
+	@OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn
 	private Theme theme;
+	
+	public Vote(String el, String ip, Integer nv, Theme th){
+		this.education_level=el;
+		this.ip=ip;
+		this.numero_votos=nv;
+		this.theme=th;
+	}
+	
+	public Vote(){}
 	
 	public String getNivel_estudios() {
 		return education_level;

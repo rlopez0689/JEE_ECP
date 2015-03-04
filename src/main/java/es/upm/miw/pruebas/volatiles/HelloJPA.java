@@ -9,6 +9,7 @@ import javax.persistence.Persistence;
 import org.eclipse.persistence.config.PersistenceUnitProperties;
 
 import es.upm.miw.models.entities.Theme;
+import es.upm.miw.models.entities.Vote;
 
 public class HelloJPA {
     public static void main(String[] args) {
@@ -20,27 +21,31 @@ public class HelloJPA {
                 .createEntityManager();
         
         Theme u1 = new Theme("ÀEsta es una pregunta?", "Tema de prueba");
+        Vote v1 = new Vote("Universidad", "127.0.0.1", 3, u1);
         // Create
         em.getTransaction().begin();
         em.persist(u1);
+        em.persist(v1);
         em.persist(new Theme("ÀPreguntas de deportes?", "Deportes"));
         em.persist(new Theme("ÀPregunta de musica?", "Musica"));
         em.getTransaction().commit();
         // Read
         System.out.println(em.find(Theme.class, 1));
+        /*
         // Update
         em.getTransaction().begin();
-        em.merge(new Theme("ÀPreguntas de tecnologia?", "dos cambiado con update"));
+        em.merge(new Theme(2,"ÀPreguntas de tecnologia?", "dos cambiado con update"));
         em.getTransaction().commit();
         // Update2
         em.getTransaction().begin();
         u1.setName("uno, cambiado con set");
         em.getTransaction().commit();
+        
         // Delete
         Theme u3 = em.find(Theme.class, 3);
         em.getTransaction().begin();
         em.remove(u3);
         em.getTransaction().commit();
+        */
     }
-    
 }
