@@ -21,12 +21,21 @@ public class HelloJPA {
         EntityManager em = Persistence.createEntityManagerFactory("JEE_ECP", properties)
                 .createEntityManager();
         
-        Theme u1 = new Theme("ÀEsta es una pregunta?", "Tema de prueba");
-        Vote v1 = new Vote(EducationLevel.MASTERSDEGREE, "127.0.0.1", u1);
+        Theme u1 = new Theme("ÀQuien es el mejor deportista?", "Deportes");
+        Theme u2 = new Theme("ÀQuien es el mejor musico?", "Musica");
+        Theme u3 = new Theme("ÀCual es el mejor videojuego de este a–o?", "Videjuegos");
+        
+        Vote v1 = new Vote(EducationLevel.MASTERSDEGREE, "127.0.0.1", u1);        
+        Vote v2 = new Vote(EducationLevel.MASTERSDEGREE, "127.0.0.1", u2);
+        Vote v3 = new Vote(EducationLevel.MASTERSDEGREE, "127.0.0.1", u3);
         // Create
         em.getTransaction().begin();
         em.persist(u1);
+        em.persist(u2);
+        em.persist(u3);
         em.persist(v1);
+        em.persist(v2);
+        em.persist(v3);
         em.persist(new Theme("ÀPreguntas de deportes?", "Deportes"));
         em.persist(new Theme("ÀPregunta de musica?", "Musica"));
         em.getTransaction().commit();
@@ -48,5 +57,7 @@ public class HelloJPA {
         em.remove(u3);
         em.getTransaction().commit();
         */
+        properties.put(PersistenceUnitProperties.DDL_GENERATION,
+                PersistenceUnitProperties.DROP_AND_CREATE);
     }
 }
