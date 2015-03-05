@@ -7,6 +7,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.persistence.EntityManager;
 import javax.persistence.Persistence;
 
 import org.eclipse.persistence.config.PersistenceUnitProperties;
@@ -22,32 +23,37 @@ public class ThemeDaoJpaTest {
 	
 	private ThemeDao dao = DaoJpaFactory.getFactory().getThemeDao();
 	private ArrayList<Theme> themes_data;
+	private static EntityManager em;
+	private Boolean initialized=false;	
 	
 	@BeforeClass
 	public static void createTables(){
 		Map<String, String> properties = new HashMap<>();
         properties.put(PersistenceUnitProperties.DDL_GENERATION,
-                PersistenceUnitProperties.DROP_AND_CREATE);
-        Persistence.createEntityManagerFactory("JEE_ECP", properties)
+                PersistenceUnitProperties.CREATE_ONLY);
+        em = Persistence.createEntityManagerFactory("JEE_ECP", properties)
                 .createEntityManager();
+        em.clear();
 	}
 	
 	@AfterClass
-	public static void CleanTables(){
-		Map<String, String> properties = new HashMap<>();
-        properties.put(PersistenceUnitProperties.DDL_GENERATION,
-                PersistenceUnitProperties.DROP_AND_CREATE);
-        Persistence.createEntityManagerFactory("JEE_ECP", properties)
-                .createEntityManager();
+	public static void cleanTables(){
+        em.getTransaction().begin();
+        em.createNativeQuery("drop table vote").executeUpdate();
+        em.createNativeQuery("drop table theme").executeUpdate();
+        em.getTransaction().commit();
 	}
 	
 	@Before
 	public void init(){
-		themes_data = new ArrayList<Theme>();
-		themes_data.add(new Theme("ÀQuien es el mejor deportista?", "Deportes"));
-		themes_data.add(new Theme("ÀQuien es el mejor musico?", "Musica"));
-		themes_data.add(new Theme("ÀCual es el mejor videojuego de este a–o?", "Videjuegos"));
-		themes_data.add(new Theme("ÀPreguntas de deportes?", "Deportes"));
+		if(!initialized){
+			themes_data = new ArrayList<Theme>();
+			themes_data.add(new Theme("ÀQuien es el mejor deportista?", "Deportes"));
+			themes_data.add(new Theme("ÀQuien es el mejor musico?", "Musica"));
+			themes_data.add(new Theme("ÀCual es el mejor videojuego de este a–o?", "Videjuegos"));
+			themes_data.add(new Theme("ÀPreguntas de deportes?", "Deportes"));
+			initialized = true;
+		}
 	}
 
 	@Test
