@@ -1,10 +1,10 @@
-package es.upm.miw.persistence.models.daos.jpa;
+package es.upm.miw.persitence.models.entities;
 
 import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-public class VoteDaoJpaTest {
+public class ThemeEntityTest {
 
 	@Test
 	public void test() {
