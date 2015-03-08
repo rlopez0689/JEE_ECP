@@ -37,6 +37,10 @@ public class Vote {
 	
 	public Vote(){}
 	
+	public Integer getId() {
+		return id;
+	}
+
 	public EducationLevel getNivel_estudios() {
 		return education_level;
 	}
