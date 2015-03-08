@@ -64,5 +64,6 @@ public class Theme {
 	public String toString() {
 		return "Tema [id=" + id + ", question=" + question + ", name=" + name
 				+ "]";
-	}	
+	}
+	
 }
