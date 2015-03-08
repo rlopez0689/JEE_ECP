@@ -11,6 +11,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.Persistence;
 
 import org.eclipse.persistence.config.PersistenceUnitProperties;
+import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
@@ -22,10 +23,9 @@ import es.upm.miw.persistence.models.entities.Theme;
 public class ThemeDaoJpaTest {
 	
 	private ThemeDao dao = DaoJpaFactory.getFactory().getThemeDao();
-	private ArrayList<Theme> themes_data;
-	private static EntityManager em;
-	private Boolean initialized=false;	
-	
+	private static ArrayList<Theme> themes_data;
+	private static EntityManager em;	
+		
 	@BeforeClass
 	public static void createTables(){
 		Map<String, String> properties = new HashMap<>();
@@ -34,10 +34,16 @@ public class ThemeDaoJpaTest {
         em = Persistence.createEntityManagerFactory("JEE_ECP", properties)
                 .createEntityManager();
         em.clear();
+        
+        themes_data = new ArrayList<Theme>();
+		themes_data.add(new Theme("ÀQuien es el mejor deportista?", "Deportes"));
+		themes_data.add(new Theme("ÀQuien es el mejor musico?", "Musica"));
+		themes_data.add(new Theme("ÀCual es el mejor videojuego de este a–o?", "Videjuegos"));
+		themes_data.add(new Theme("ÀPreguntas de deportes?", "Deportes"));
 	}
 	
 	@AfterClass
-	public static void cleanTables(){
+	public static void DropTables(){
         em.getTransaction().begin();
         em.createNativeQuery("drop table vote").executeUpdate();
         em.createNativeQuery("drop table theme").executeUpdate();
@@ -45,14 +51,16 @@ public class ThemeDaoJpaTest {
 	}
 	
 	@Before
-	public void init(){
-		if(!initialized){
-			themes_data = new ArrayList<Theme>();
-			themes_data.add(new Theme("ÀQuien es el mejor deportista?", "Deportes"));
-			themes_data.add(new Theme("ÀQuien es el mejor musico?", "Musica"));
-			themes_data.add(new Theme("ÀCual es el mejor videojuego de este a–o?", "Videjuegos"));
-			themes_data.add(new Theme("ÀPreguntas de deportes?", "Deportes"));
-			initialized = true;
+	public void beforeTest(){
+		for(int i=0;i<themes_data.size();i++){
+			dao.create(themes_data.get(i));
+		}
+	}
+	
+	@After
+	public void cleanTables(){
+		for(int i=0;i<themes_data.size();i++){
+			dao.deleteById(themes_data.get(i).getId());
 		}
 	}
 
@@ -60,7 +68,6 @@ public class ThemeDaoJpaTest {
 	public void testCreate() {
 		List<Theme> themes_compare = new ArrayList<Theme>();
 		for(int i=0;i<themes_data.size();i++){
-			dao.create(themes_data.get(i));
 			themes_compare.add(themes_data.get(i));
 		}
 		
@@ -72,23 +79,24 @@ public class ThemeDaoJpaTest {
 	}
 
 	@Test
-	public void testRead() {
-		fail("Not yet implemented");
+	public void testRead() {		
+		ArrayList<Integer> themes_ids = new ArrayList<Integer>();
+		List<Theme> themes_compare = new ArrayList<Theme>();
+		for(int i=0;i<themes_data.size();i++){
+			themes_compare.add(themes_data.get(i));
+			themes_ids.add(themes_data.get(i).getId());
+		}
+		
+		for(int i=0;i<themes_ids.size();i++){
+			assertEquals(themes_ids.get(i),themes_data.get(i).getId());
+		}
 	}
 
 	@Test
 	public void testUpdate() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testDeleteById() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testFindAll() {
-		fail("Not yet implemented");
+		for(int i=0;i<themes_data.size();i++){
+			dao.update(themes_data.get(i));
+		}
 	}
 
 }
