@@ -25,6 +25,12 @@ public class Theme {
 		this.name = name;
 	}
 	
+	public Theme(int id, String question, String name){
+		this.id = id;
+		this.question = question;
+		this.name = name;
+	}
+	
 	public Theme(){}
 	
 	public Integer getId() {

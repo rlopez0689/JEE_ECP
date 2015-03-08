@@ -12,6 +12,7 @@ import es.upm.miw.persistence.models.daos.ThemeDao;
 import es.upm.miw.persistence.models.daos.VoteDao;
 import es.upm.miw.persistence.models.daos.jdbc.ThemeDaoJdbc;
 import es.upm.miw.persistence.models.daos.jdbc.DaoJdbcFactory;
+import es.upm.miw.persistence.models.entities.Theme;
 
 public class DaoJdbcFactory extends DaoFactory {
     private static final String DRIVER = "com.mysql.jdbc.Driver";
@@ -53,7 +54,7 @@ public class DaoJdbcFactory extends DaoFactory {
     }
 
     @Override
-    public UserDao getThemeDao() {
+    public ThemeDao getThemeDao() {
         return new ThemeDaoJdbc();
     }
 
