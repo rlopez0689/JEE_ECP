@@ -106,5 +106,4 @@ public class VoteDaoJpaTest {
 		assertEquals(updated_value.getIp(), ip);
 		assertEquals(updated_value.getNivel_estudios(), ed);
 	}
-	
 }
