@@ -94,10 +94,13 @@ public class ThemeDaoJpaTest {
 	@Test
 	public void testUpdate() {
 		String name="Name update", question="Question update";
-		Theme update = themes_data.get(0);
-		update.setName(name);
-		update.setQuestion(question);
-		dao.update(update);		
+		Theme update_value = themes_data.get(0);
+		update_value.setName(name);
+		update_value.setQuestion(question);
+		dao.update(update_value);		
+		Theme updated_value = dao.read(update_value.getId());
+		assertEquals(updated_value.getName(), name);
+		assertEquals(updated_value.getQuestion(), question);	
 	}
 
 }

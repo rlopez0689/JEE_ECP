@@ -96,7 +96,15 @@ public class VoteDaoJpaTest {
 
 	@Test
 	public void testUpdate() {
-		fail("Not yet implemented");
+		String ip="255.127.34.2";
+		EducationLevel ed = EducationLevel.MIDDLESCHOOL;
+		Vote update_value = vote_data.get(0);
+		update_value.setIp(ip);
+		update_value.setNivel_estudios(ed);
+		daoVote.update(update_value);		
+		Vote updated_value = daoVote.read(update_value.getId());
+		assertEquals(updated_value.getIp(), ip);
+		assertEquals(updated_value.getNivel_estudios(), ed);
 	}
 	
 }
