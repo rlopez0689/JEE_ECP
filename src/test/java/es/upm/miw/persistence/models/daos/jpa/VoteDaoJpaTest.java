@@ -99,4 +99,5 @@ public class VoteDaoJpaTest {
 	public void testUpdate() {
 		fail("Not yet implemented");
 	}
+	
 }
