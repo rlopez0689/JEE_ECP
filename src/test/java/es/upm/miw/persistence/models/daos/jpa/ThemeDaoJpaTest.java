@@ -80,23 +80,24 @@ public class ThemeDaoJpaTest {
 
 	@Test
 	public void testRead() {		
-		ArrayList<Integer> themes_ids = new ArrayList<Integer>();
 		List<Theme> themes_compare = new ArrayList<Theme>();
 		for(int i=0;i<themes_data.size();i++){
-			themes_compare.add(themes_data.get(i));
-			themes_ids.add(themes_data.get(i).getId());
+			themes_compare.add(dao.read(themes_data.get(i).getId()));
 		}
 		
-		for(int i=0;i<themes_ids.size();i++){
-			assertEquals(themes_ids.get(i),themes_data.get(i).getId());
-		}
+		List<Theme> themes = dao.findAll();
+        for (Theme theme : themes_compare) {
+            assertTrue(themes.contains(theme));
+        }
 	}
 
 	@Test
 	public void testUpdate() {
-		for(int i=0;i<themes_data.size();i++){
-			dao.update(themes_data.get(i));
-		}
+		String name="Name update", question="Question update";
+		Theme update = themes_data.get(0);
+		update.setName(name);
+		update.setQuestion(question);
+		dao.update(update);		
 	}
 
 }

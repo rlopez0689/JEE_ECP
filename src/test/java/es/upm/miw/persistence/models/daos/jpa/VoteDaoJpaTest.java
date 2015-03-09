@@ -83,16 +83,15 @@ public class VoteDaoJpaTest {
 
 	@Test
 	public void testRead() {		
-		ArrayList<Integer> votes_ids = new ArrayList<Integer>();
 		List<Vote> votes_compare = new ArrayList<Vote>();
 		for(int i=0;i<vote_data.size();i++){
-			votes_compare.add(vote_data.get(i));
-			votes_ids.add(vote_data.get(i).getId());
+			votes_compare.add(daoVote.read(vote_data.get(i).getId()));
 		}
 		
-		for(int i=0;i<votes_ids.size();i++){
-			assertEquals(votes_ids.get(i),vote_data.get(i).getId());
-		}
+		List<Vote> votes = daoVote.findAll();
+        for (Vote vote : votes_compare) {
+            assertTrue(votes.contains(vote));
+        }
 	}
 
 	@Test
