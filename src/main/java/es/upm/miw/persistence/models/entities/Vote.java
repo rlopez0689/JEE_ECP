@@ -23,13 +23,17 @@ public class Vote {
 	public static final String IP = "IP";
 	private String ip;
 	
+	public static final String VALORATION = "VALORATION";
+	private Integer valoration;
+	
 	public static final String THEME = "THEME_ID";
 	
 	@ManyToOne(cascade=CascadeType.ALL)
     @JoinColumn
 	private Theme theme;
 	
-	public Vote(EducationLevel el, String ip, Theme th){
+	public Vote(EducationLevel el, String ip, Integer val, Theme th){
+		this.valoration=val;
 		this.education_level=el;
 		this.ip=ip;
 		this.theme=th;
@@ -59,6 +63,14 @@ public class Vote {
 	public void setTema(Theme tema) {
 		this.theme = tema;
 	}
+	public Integer getValoration() {
+		return valoration;
+	}
+
+	public void setValoration(Integer valoration) {
+		this.valoration = valoration;
+	}
+	
 	
 	@Override
 	public boolean equals(Object obj) {

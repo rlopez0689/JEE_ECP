@@ -51,9 +51,9 @@ public class VoteDaoJpaTest {
 	@Before
 	public void beforeTest(){
 		vote_data = new ArrayList<Vote>();
-		vote_data.add(new Vote(EducationLevel.MASTERSDEGREE, "127.0.0.1", new Theme("ÀQuien es el mejor deportista?", "Deportes")));
-		vote_data.add(new Vote(EducationLevel.BACHELORDEGREE, "255.0.0.1", new Theme("ÀQuien es el mejor musico?", "Musica")));
-		vote_data.add(new Vote(EducationLevel.DOCTORALDEGREE, "255.255.255.5", new Theme("ÀPreguntas de deportes?", "Deportes")));
+		vote_data.add(new Vote(EducationLevel.MASTERSDEGREE, "127.0.0.1",1,new Theme("ÀQuien es el mejor deportista?", "Deportes")));
+		vote_data.add(new Vote(EducationLevel.BACHELORDEGREE, "255.0.0.1",3, new Theme("ÀQuien es el mejor musico?", "Musica")));
+		vote_data.add(new Vote(EducationLevel.DOCTORALDEGREE, "255.255.255.5",9, new Theme("ÀPreguntas de deportes?", "Deportes")));
 		for(int i=0;i<vote_data.size();i++){
 			daoVote.create(vote_data.get(i));	
 		}
