@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+<h:head>
+	<title>JSF 2.0</title>
+</h:head>
+<h:body>
+	<h3>Validación de formularios</h3>
+	<h:form id="form">
+		<h:messages for="form" style="color:red" />
+        <p>Conversión implicita a Integer:<h:inputText id="tInt" value="#{validator.tInt}" />
+            <h:message for="tInt" style="color:red" /></p>
+        <p>Conversión implicita a Byte:<h:inputText id="tByte" value="#{validator.tByte}" 
+                converterMessage="Debe ser un Byte"/>
+            <h:message for="tByte" style="color:red" /></p>
+        <p>Conversores mediante Tags de JSF: <h:inputText id="tDouble" value="#{validator.tDouble}"
+                converterMessage="Debe ser un valor decimal de 2 decimales" >
+                <f:convertNumber minFractionDigits="2" maxFractionDigits="2" />
+            </h:inputText>
+            <h:message for="tDouble" style="color:red" /></p>
+        <p>Validaciones mediante Tags de JSF (pass): <h:inputSecret id="pass" value="#{validator.pass}" required="true"
+                requiredMessage="Campo Obligatorio" redisplay="true" validatorMessage="Entre 2 y 8 caracteres">
+                <f:validateLength minimum="2" maximum="8" />
+            </h:inputSecret>
+            <h:message for="pass" style="color:red" /></p>
+        <p>Validación mediante los métodos set* (1234 no permitido, distinto a pass):<h:inputText id="mSet" value="#{validator.mSet}" />
+			<h:message for="mSet" style="color:red" /></p>
+		<p><h:commandButton value="Continuar" action="#{validator.process}"></h:commandButton></p>
+	</h:form>
+</h:body>
+</html>
