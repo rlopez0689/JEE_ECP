@@ -15,7 +15,7 @@ import es.upm.miw.persistence.models.daos.jpa.DaoJpaFactory;
 import es.upm.miw.persistence.models.daos.jpa.GenericDaoJpa;
 
 public class GenericDaoJpa<T, ID> implements GenericDao<T, ID> {
-    private Class<T> persistentClass;
+    protected Class<T> persistentClass;
 
     public GenericDaoJpa(Class<T> persistentClass) {
         this.persistentClass = persistentClass;

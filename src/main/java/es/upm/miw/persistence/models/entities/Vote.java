@@ -25,7 +25,7 @@ public class Vote {
 	
 	public static final String THEME = "THEME_ID";
 	
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne(cascade=CascadeType.ALL)
     @JoinColumn
 	private Theme theme;
 	

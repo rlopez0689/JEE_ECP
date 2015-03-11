@@ -38,10 +38,6 @@ public class VoteDaoJpaTest {
         em = Persistence.createEntityManagerFactory("JEE_ECP", properties)
                 .createEntityManager();
         em.clear();
-        vote_data = new ArrayList<Vote>();
-		vote_data.add(new Vote(EducationLevel.MASTERSDEGREE, "127.0.0.1", new Theme("ÀQuien es el mejor deportista?", "Deportes")));
-		vote_data.add(new Vote(EducationLevel.BACHELORDEGREE, "255.0.0.1", new Theme("ÀQuien es el mejor musico?", "Musica")));
-		vote_data.add(new Vote(EducationLevel.DOCTORALDEGREE, "255.255.255.5", new Theme("ÀPreguntas de deportes?", "Deportes")));
 	}
 	
 	@AfterClass
@@ -54,6 +50,10 @@ public class VoteDaoJpaTest {
 	
 	@Before
 	public void beforeTest(){
+		vote_data = new ArrayList<Vote>();
+		vote_data.add(new Vote(EducationLevel.MASTERSDEGREE, "127.0.0.1", new Theme("ÀQuien es el mejor deportista?", "Deportes")));
+		vote_data.add(new Vote(EducationLevel.BACHELORDEGREE, "255.0.0.1", new Theme("ÀQuien es el mejor musico?", "Musica")));
+		vote_data.add(new Vote(EducationLevel.DOCTORALDEGREE, "255.255.255.5", new Theme("ÀPreguntas de deportes?", "Deportes")));
 		for(int i=0;i<vote_data.size();i++){
 			daoVote.create(vote_data.get(i));	
 		}
@@ -62,7 +62,7 @@ public class VoteDaoJpaTest {
 	@After
 	public void cleanTables(){
 		for(int i=0;i<vote_data.size();i++){
-			daoVote.deleteById(vote_data.get(i).getId());
+			daoVote.deleteVotesByTheme(vote_data.get(i).getTema().getId());
 			daoTheme.deleteById(vote_data.get(i).getTema().getId());
 		}
 	}
