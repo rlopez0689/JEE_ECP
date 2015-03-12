@@ -9,13 +9,22 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import es.upm.miw.persistence.models.entities.Theme;
+import es.upm.miw.web.controllers.ejbs.ControllerFactoryEJB;
 
 
-@WebServlet("/v1/*")
+@WebServlet("/jsp/*")
 public class Dispatcher extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
     private static String PATH_ROOT_VIEW = "/votesJSP/";
+    
+    private ControllerFactoryEJB cfEJB;
+    
+    public ControllerFactoryEJB getControllerFactoryEJB(){
+    	if(cfEJB == null)
+    		cfEJB = new ControllerFactoryEJB();
+    	return cfEJB;
+    }
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -51,6 +60,7 @@ public class Dispatcher extends HttpServlet {
         	theme.setName(request.getParameter("name"));
         	theme.setQuestion(request.getParameter("question"));
         	AddView addThemesView = new AddView();
+        	addThemesView.setControllerFactory(this.getControllerFactoryEJB());
         	addThemesView.setTheme(theme);
         	request.setAttribute(action, addThemesView);
         	view = addThemesView.process();

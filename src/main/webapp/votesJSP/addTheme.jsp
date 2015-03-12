@@ -12,7 +12,7 @@
 		Agregar <b>Tema</b>
 	</h2>
 	<c:set var="aView" scope="request" value="${addTheme}" />
-	<form action="/JEE_ECP/v1/addPersona" method="post">
+	<form action="/JEE_ECP/jsp/addTheme" method="post">
 		<p>${aView.message}</p>
 		<p>
 			Name: <input name="nombre" type="text"

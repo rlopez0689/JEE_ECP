@@ -1,8 +1,11 @@
 package es.upm.miw.web.beans;
 
+import javax.faces.bean.ManagedBean;
+
 import es.upm.miw.persistence.models.entities.Theme;
 import es.upm.miw.web.controllers.AddThemeController;
 
+@ManagedBean
 public class AddView extends ViewBean {
 	
 	private String message;
@@ -39,9 +42,11 @@ public class AddView extends ViewBean {
     }
 
     public String process() {
-    	String next = null;
+    	System.out.println(this.getControllerFactory());
         AddThemeController addThemeController = this.getControllerFactory().getAddThemeController();
-    	return "prueba";
+    	System.out.println("Traza");
+        addThemeController.addTheme(this.theme);
+        return "prueba";
     }
 	
 	

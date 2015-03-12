@@ -9,16 +9,16 @@
 <body>
 	<h1>Home Votaciones: V1</h1>
 	<p>
-		<a href="/JEE_ECP/v1/addTheme">Agregar Tema</a>
+		<a href="/JEE_ECP/jsp/addTheme">Agregar Tema</a>
 	</p>
 	<p>
-		<a href="/Web/v1/#">Borrar Tema</a>
+		<a href="/Web/jsp/#">Borrar Tema</a>
 	</p>
 	<p>
-		<a href="/Web/v1/#">Votar</a>
+		<a href="/Web/jsp/#">Votar</a>
 	</p>
 	<p>
-		<a href="/Web/v1/#">Ver Votaciones</a>
+		<a href="/Web/jsp/#">Ver Votaciones</a>
 	</p>
 </body>
 </html>
