@@ -8,6 +8,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import es.upm.miw.persistence.models.entities.Theme;
+
 
 @WebServlet("/v1/*")
 public class Dispatcher extends HttpServlet {
@@ -23,15 +25,10 @@ public class Dispatcher extends HttpServlet {
 
         String view;
         switch (action) {
-        case "temas":
-            SeeThemesView themesView = new SeeThemesView();
-            //personaView.setPersona(new Persona());
-            request.setAttribute(action, themesView);
-            view = action;
-            break;
-        case "rol":
-            SeeVotesView rolView = new SeeVotesView();
-            request.setAttribute(action, rolView);
+        case "addTheme":
+            AddView addThemesView = new AddView();
+            addThemesView.setTheme(new Theme());
+            request.setAttribute(action, addThemesView);
             view = action;
             break;
         default:
@@ -42,4 +39,24 @@ public class Dispatcher extends HttpServlet {
                 .forward(request, response);
 
     }
+    
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        String action = request.getPathInfo().substring(1);
+        String view = "home";
+        switch (action) {
+        case "addTheme":
+        	Theme theme = new Theme();
+        	theme.setName(request.getParameter("name"));
+        	theme.setQuestion(request.getParameter("question"));
+        	AddView addThemesView = new AddView();
+        	addThemesView.setTheme(theme);
+        	request.setAttribute(action, addThemesView);
+        	view = addThemesView.process();
+            break;
+       }
+        this.getServletContext().getRequestDispatcher(PATH_ROOT_VIEW + view + ".jsp")
+        .forward(request, response);
+   }
 }

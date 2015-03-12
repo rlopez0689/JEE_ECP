@@ -31,7 +31,9 @@ public class Theme {
 		this.name = name;
 	}
 	
-	public Theme(){}
+	public Theme(){
+		
+	}
 	
 	public Integer getId() {
 		return id;
