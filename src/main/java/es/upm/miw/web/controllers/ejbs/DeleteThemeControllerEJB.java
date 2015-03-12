@@ -1,5 +1,7 @@
 package es.upm.miw.web.controllers.ejbs;
 
-public class DeleteThemeControllerEJB {
+import es.upm.miw.web.controllers.DeleteThemeController;
+
+public class DeleteThemeControllerEJB extends DeleteThemeController {
 
 }

@@ -1,8 +1,9 @@
 package es.upm.miw.web.beans;
 
 import es.upm.miw.persistence.models.entities.Theme;
+import es.upm.miw.web.controllers.AddThemeController;
 
-public class AddView {
+public class AddView extends ViewBean {
 	
 	private String message;
 
@@ -38,16 +39,8 @@ public class AddView {
     }
 
     public String process() {
-    	/*
-        if (this.AddView.getId() == 666 && !this.AddView.getNombre().equals("Demonio")) {
-            this.errorMsg = "Sólo se acepta el nombre 'Demonio'";
-            return "persona";
-        } else {
-            LogManager.getLogger(PersonaView.class).debug(
-                    "Se accede a la capa de negocio para registrar persona: " + persona);
-            return "home";AddView
-        }
-        */
+    	String next = null;
+        AddThemeController addThemeController = this.getControllerFactory().getAddThemeController();
     	return "prueba";
     }
 	

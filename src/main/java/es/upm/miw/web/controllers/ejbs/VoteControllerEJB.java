@@ -1,5 +1,7 @@
 package es.upm.miw.web.controllers.ejbs;
 
-public class VoteControllerEJB {
+import es.upm.miw.web.controllers.VoteController;
+
+public class VoteControllerEJB extends VoteController {
 
 }

@@ -1,5 +1,7 @@
 package es.upm.miw.web.controllers.ejbs;
 
-public class SeeVotesControllerEJB {
+import es.upm.miw.web.controllers.SeeVotesController;
+
+public class SeeVotesControllerEJB extends SeeVotesController {
 
 }
