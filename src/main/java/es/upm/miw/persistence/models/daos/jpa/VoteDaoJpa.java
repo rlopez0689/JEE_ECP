@@ -57,7 +57,7 @@ public class VoteDaoJpa extends GenericDaoJpa<Vote, Integer> implements VoteDao 
 	@Override
 	public List<Object[]> getAverageVotesByEducationLevel() {
 		EntityManager em = DaoJpaFactory.getEntityManagerFactory().createEntityManager();
-		Query query = em.createQuery("SELECT sum((c.valoration)*1.0/(SELECT count(t.id) FROM Vote t WHERE t.theme.id=3852)), c.education_level FROM Vote c WHERE c.theme.id=3852 group by c.education_level", Object[].class);
+		Query query = em.createQuery("SELECT avg((c.valoration)), c.education_level FROM Vote c WHERE c.theme.id=3852 group by c.education_level", Object[].class);
 		List<Object[]> results = query.getResultList();
 		return results;
 	}

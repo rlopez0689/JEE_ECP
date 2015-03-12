@@ -20,35 +20,29 @@ public class ControllerFactoryEJB extends ControllerFactory {
 	
 	@Override
 	public AddThemeController getAddThemeController() {
-		System.out.println("Regresar factoria");
-		if(addThemeController == null){
+		if(addThemeController == null)
 			addThemeController = new AddThemeControllerEJB();
-		}
 		return this.addThemeController;
 	}
 
 	@Override
 	public DeleteThemeController getDeleteThemeController() {
-		if(deleteThemeController == null){
+		if(deleteThemeController == null)
 			deleteThemeController = new DeleteThemeController();
-		}
 		return this.deleteThemeController;
 	}
 
 	@Override
 	public SeeVotesController getSeeVotesController() {
-		if(seeVotesController == null){
+		if(seeVotesController == null)
 			seeVotesController = new SeeVotesController();
-		}
 		return this.seeVotesController;
 	}
 
 	@Override
 	public VoteController getVoteController() {
-		if(voteController == null){
+		if(voteController == null)
 			voteController = new VoteController();
-		}
 		return this.voteController;
 	}
-
 }

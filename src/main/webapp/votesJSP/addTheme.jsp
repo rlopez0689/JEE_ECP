@@ -15,7 +15,7 @@
 	<form action="/JEE_ECP/jsp/addTheme" method="post">
 		<p>${aView.message}</p>
 		<p>
-			Name: <input name="nombre" type="text"
+			Name: <input name="name" type="text"
 				value="${aView.theme.name}" />
 		</p>
 		<p>
@@ -26,7 +26,7 @@
 		</p>
 	</form>
 	<p>
-		<a href="/JEE_ECP/v1/home">Volver a Home</a>
+		<a href="/JEE_ECP/jsp/home">Volver a Home</a>
 	</p>
 </body>
 </html>

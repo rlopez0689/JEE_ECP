@@ -31,7 +31,6 @@ public class Dispatcher extends HttpServlet {
             throws ServletException, IOException {
 
         String action = request.getPathInfo().substring(1);
-
         String view;
         switch (action) {
         case "addTheme":
@@ -40,13 +39,18 @@ public class Dispatcher extends HttpServlet {
             request.setAttribute(action, addThemesView);
             view = action;
             break;
+        case "deleteTheme":
+            DeleteThemeView deleteThemesView = new DeleteThemeView();
+            deleteThemesView.setTheme(new Theme());
+            request.setAttribute(action, addThemesView);
+            view = action;
+            break;    
         default:
             view = "home";
         }
 
         this.getServletContext().getRequestDispatcher(PATH_ROOT_VIEW + view + ".jsp")
                 .forward(request, response);
-
     }
     
     @Override

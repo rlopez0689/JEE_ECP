@@ -46,7 +46,8 @@ public class AddView extends ViewBean {
         AddThemeController addThemeController = this.getControllerFactory().getAddThemeController();
     	System.out.println("Traza");
         addThemeController.addTheme(this.theme);
-        return "prueba";
+        this.message="Tema agregado correctamente";
+        return "addTheme";
     }
 	
 	
