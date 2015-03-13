@@ -26,11 +26,14 @@
 				<th>Pregunta</th>
 			</tr>
 			<c:forEach var="theme" items="${dView.themes}">
-				<tr>
-					<td>${theme.name}</td>
-					<td>${theme.question}</td>
-					<td><button>Eliminar</button></td>
-				</tr>
+				<form action="/JEE_ECP/jsp/deleteThemes" method='post'>
+					<input name='id' type='hidden' value='${theme.id}'/>
+					<tr>
+						<td>${theme.name}</td>
+						<td>${theme.question}</td>
+						<td><input type='submit' value='Eliminar'/></td>
+					</tr>
+				</form>
 			</c:forEach>
 		</table>
 	</c:if>
