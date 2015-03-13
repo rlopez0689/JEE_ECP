@@ -20,6 +20,8 @@ public class Dispatcher extends HttpServlet {
     
     private ControllerFactoryEJB cfEJB;
     
+    private DeleteView deleteThemesView;
+    
     public ControllerFactoryEJB getControllerFactoryEJB(){
     	if(cfEJB == null)
     		cfEJB = new ControllerFactoryEJB();
@@ -38,11 +40,11 @@ public class Dispatcher extends HttpServlet {
             addThemesView.setTheme(new Theme());
             request.setAttribute(action, addThemesView);
             view = action;
-            break;
-        case "seeThemes":
-            SeeThemesView seeThemesView = new SeeThemesView();
-            seeThemesView.setControllerFactory(this.getControllerFactoryEJB());
-            request.setAttribute(action, seeThemesView);
+            break;    
+        case "deleteThemes":
+            deleteThemesView = new DeleteView();
+            deleteThemesView.setControllerFactory(this.getControllerFactoryEJB());
+            request.setAttribute(action, deleteThemesView);
             view = action;
             break;    
         default:
@@ -69,6 +71,17 @@ public class Dispatcher extends HttpServlet {
         	request.setAttribute(action, addThemesView);
         	view = addThemesView.process();
             break;
+        case "deleteThemes":
+        	deleteThemesView.setControllerFactory(this.getControllerFactoryEJB());
+        	if(deleteThemesView.getCode()!=null){
+        		
+        	}
+        	else{
+        		deleteThemesView.setCode(request.getParameter("code"));
+        	}
+        	request.setAttribute("deleteThemes", deleteThemesView);
+        	view = "deleteThemes";
+            break;     
        }
         this.getServletContext().getRequestDispatcher(PATH_ROOT_VIEW + view + ".jsp")
         .forward(request, response);

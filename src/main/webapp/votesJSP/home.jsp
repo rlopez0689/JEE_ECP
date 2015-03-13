@@ -12,7 +12,10 @@
 		<a href="/JEE_ECP/jsp/addTheme">Agregar Tema</a>
 	</p>
 	<p>
-		<a href="/JEE_ECP/jsp/seeThemes">Votar/Borrar Tema</a>
+		<a href="/JEE_ECP/jsp/deleteThemes">Borrar Tema</a>
+	</p>
+	<p>
+		<a href="/Web/jsp/#">Votar</a>
 	</p>
 	<p>
 		<a href="/Web/jsp/#">Ver Votaciones</a>
