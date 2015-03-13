@@ -41,10 +41,6 @@ public class DeleteView extends ViewBean {
     	this.themes=deleteThemeController.getThemes();
     }
 	
-	public void verifyCode(){
-		
-	}
-
     public String process() {
         return "addTheme";
     }
