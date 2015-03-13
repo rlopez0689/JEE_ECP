@@ -28,7 +28,7 @@ public class ControllerFactoryEJB extends ControllerFactory {
 	@Override
 	public DeleteThemeController getDeleteThemeController() {
 		if(deleteThemeController == null)
-			deleteThemeController = new DeleteThemeController();
+			deleteThemeController = new DeleteThemeControllerEJB();
 		return this.deleteThemeController;
 	}
 
@@ -42,7 +42,7 @@ public class ControllerFactoryEJB extends ControllerFactory {
 	@Override
 	public VoteController getVoteController() {
 		if(voteController == null)
-			voteController = new VoteController();
+			voteController = new VoteControllerEJB();
 		return this.voteController;
 	}
 }

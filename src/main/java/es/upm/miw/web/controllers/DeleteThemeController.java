@@ -1,5 +1,5 @@
 package es.upm.miw.web.controllers;
 
-public class DeleteThemeController {
+public interface DeleteThemeController extends ThemeController {
 
 }

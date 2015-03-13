@@ -5,26 +5,28 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<title>addThemeView</title>
+<title>deleteThemeView</title>
 </head>
 <body>
 	<h2>
-		Add <b>Theme</b>
+		<b>Themes</b>
 	</h2>
-	<c:set var="aView" scope="request" value="${addTheme}" />
-	<form action="/JEE_ECP/jsp/addTheme" method="post">
-		<p>${aView.message}</p>
-		<p>
-			Name: <input name="name" type="text"
-				value="${aView.theme.name}" />
-		</p>
-		<p>
-			Question: <input name="question" type="text" value="${aView.theme.question}" />
-		</p>
-		<p>
-			<input type="submit" value="Enviar" />
-		</p>
-	</form>
+	<c:set var="dView" scope="request" value="${seeThemes}" />
+	<div>${dView.update()}</div>
+	<table>
+		<tr>
+			<th>Nombre</th>
+			<th>Pregunta</th>
+		</tr>
+		<c:forEach var="theme" items="${dView.themes}">
+			<tr>
+				<td>${theme.name}</td>
+				<td>${theme.question}</td>
+				<td><button>Votar</button></td>
+				<td><button>Eliminar</button></td>
+			</tr>
+		</c:forEach>
+	</table>
 	<p>
 		<a href="/JEE_ECP/jsp/home">Volver a Home</a>
 	</p>

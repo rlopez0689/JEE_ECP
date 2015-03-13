@@ -1,5 +1,7 @@
 package es.upm.miw.web.controllers;
 
-public class VoteController {
 
+public interface VoteController extends ThemeController {
+
+	
 }

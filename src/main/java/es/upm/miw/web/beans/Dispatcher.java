@@ -39,10 +39,10 @@ public class Dispatcher extends HttpServlet {
             request.setAttribute(action, addThemesView);
             view = action;
             break;
-        case "deleteTheme":
-            DeleteThemeView deleteThemesView = new DeleteThemeView();
-            deleteThemesView.setTheme(new Theme());
-            request.setAttribute(action, addThemesView);
+        case "seeThemes":
+            SeeThemesView seeThemesView = new SeeThemesView();
+            seeThemesView.setControllerFactory(this.getControllerFactoryEJB());
+            request.setAttribute(action, seeThemesView);
             view = action;
             break;    
         default:
