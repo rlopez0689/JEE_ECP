@@ -73,7 +73,8 @@ public class Dispatcher extends HttpServlet {
             break;
         case "deleteThemes":
         	deleteThemesView.setControllerFactory(this.getControllerFactoryEJB());
-        	if(deleteThemesView.getCode()!=null)
+        	System.out.println("Codigo en dispatcher: "+deleteThemesView.getCode());
+        	if(deleteThemesView.getCode()!=null && deleteThemesView.getCode()!="666" )
         		deleteThemesView.deleteTheme(request.getParameter("id"));
         	else
         		deleteThemesView.setCode(request.getParameter("code"));
