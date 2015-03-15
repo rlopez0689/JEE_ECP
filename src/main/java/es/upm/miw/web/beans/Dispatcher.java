@@ -45,6 +45,12 @@ public class Dispatcher extends HttpServlet {
             request.setAttribute(action, authorizeView);
             view = action;
             break;    
+        case "voteTheme":
+        	ListView listView = new ListView();
+    		listView.setControllerFactory(this.getControllerFactoryEJB());
+    		request.setAttribute("listThemes", listView);
+    		view = "listThemes";
+    		break;
         default:
             view = "home";
         }
