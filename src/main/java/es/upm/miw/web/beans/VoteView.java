@@ -3,18 +3,20 @@ package es.upm.miw.web.beans;
 import es.upm.miw.persistence.models.entities.Theme;
 import es.upm.miw.persistence.models.entities.Vote;
 import es.upm.miw.persistence.models.utils.EducationLevel;
-import es.upm.miw.web.controllers.AddThemeController;
 import es.upm.miw.web.controllers.VoteController;
 
 public class VoteView extends ViewBean {
 
 		private int idTema;
 		private Vote vote;
-		private Theme theme;
 		private Integer[] valorations = new Integer[11];
 		private EducationLevel[] ed;
+		private Theme theme;
 				
-		public VoteView(){}
+		public VoteView(){
+			vote = new Vote();
+			theme = new Theme();
+		}
 
 		public int getIdTema() {
 			return idTema;
@@ -39,7 +41,7 @@ public class VoteView extends ViewBean {
 		public void setTheme(Theme theme) {
 			this.theme = theme;
 		}
-				
+
 		public EducationLevel[] getEd() {
 			return ed;
 		}
@@ -70,6 +72,8 @@ public class VoteView extends ViewBean {
 
 		public void procesar(){
 			VoteController voteController = this.getControllerFactory().getVoteController();
-			Theme tema = voteController.getTheme(this.getIdTema());
+			this.assignTheme();
+			this.vote.setTema(this.theme);
+			voteController.voteTheme(this.vote);
 		}
 }

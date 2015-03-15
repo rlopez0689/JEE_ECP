@@ -26,9 +26,8 @@ public class Theme {
 	}
 	
 	public Theme(int id, String question, String name){
+		this(question, name);
 		this.id = id;
-		this.question = question;
-		this.name = name;
 	}
 	
 	public Theme(){
@@ -68,4 +67,13 @@ public class Theme {
 				+ "]";
 	}
 	
+	@Override
+    public int hashCode() {
+        int hash = 1;
+        final int prime = 31;
+        hash = hash * prime + this.id;
+        hash = hash * prime + (this.name == null ? 0 : this.name.hashCode());
+        hash = hash * prime + (this.question == null ? 0 : this.question.hashCode());
+        return hash;
+	}
 }

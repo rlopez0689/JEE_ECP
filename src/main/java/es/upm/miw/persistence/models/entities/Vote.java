@@ -1,11 +1,12 @@
 package es.upm.miw.persistence.models.entities;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+
+import org.eclipse.persistence.annotations.CascadeOnDelete;
 
 import es.upm.miw.persistence.models.utils.EducationLevel;
 
@@ -28,8 +29,9 @@ public class Vote {
 	
 	public static final String THEME = "THEME_ID";
 	
-	@ManyToOne(cascade=CascadeType.ALL)
+	@ManyToOne
     @JoinColumn
+    @CascadeOnDelete
 	private Theme theme;
 	
 	public Vote(EducationLevel el, String ip, Integer val, Theme th){
@@ -40,6 +42,11 @@ public class Vote {
 	}
 	
 	public Vote(){}
+	
+	public Vote(Integer id, String ip, Theme theme, Integer valoration, EducationLevel ed) {
+        this(ed, ip, valoration, theme);
+        this.id = id;
+    }
 	
 	public Integer getId() {
 		return id;
@@ -85,4 +92,16 @@ public class Vote {
 		return "Voto [id=" + id + ", nivel_estudios=" + education_level
 				+ ", ip=" + ip + ", tema="+ theme + "]";
 	}	
+	
+	@Override
+    public int hashCode() {
+        int hash = 1;
+        final int prime = 31;
+        hash = hash * prime + (this.valoration == null ? 0 : this.valoration.hashCode());
+        hash = hash * prime + (this.ip == null ? 0 : this.ip.hashCode());
+        hash = hash * prime + this.id;
+        hash = hash * prime + (this.education_level == null ? 0 : this.education_level.hashCode());
+        return hash;
+
+    }
 }

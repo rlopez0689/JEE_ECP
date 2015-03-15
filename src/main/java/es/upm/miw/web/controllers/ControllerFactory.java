@@ -6,4 +6,5 @@ public abstract class ControllerFactory {
 	public abstract DeleteThemeController getDeleteThemeController();
 	public abstract SeeVotesController getSeeVotesController();
 	public abstract VoteController getVoteController();
+	public abstract ThemeController getThemeController();
 }

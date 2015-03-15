@@ -7,6 +7,7 @@ import es.upm.miw.web.controllers.AddThemeController;
 import es.upm.miw.web.controllers.ControllerFactory;
 import es.upm.miw.web.controllers.DeleteThemeController;
 import es.upm.miw.web.controllers.SeeVotesController;
+import es.upm.miw.web.controllers.ThemeController;
 import es.upm.miw.web.controllers.VoteController;
 
 @ManagedBean(name = "controllerFactory")
@@ -17,6 +18,7 @@ public class ControllerFactoryEJB extends ControllerFactory {
 	private DeleteThemeController deleteThemeController;
 	private VoteController voteController;
 	private SeeVotesController seeVotesController;
+	private ThemeController themeController;
 	
 	@Override
 	public AddThemeController getAddThemeController() {
@@ -44,5 +46,12 @@ public class ControllerFactoryEJB extends ControllerFactory {
 		if(voteController == null)
 			voteController = new VoteControllerEJB();
 		return this.voteController;
+	}
+
+	@Override
+	public ThemeController getThemeController() {
+		if(themeController == null)
+			themeController = new ThemeControllerEJB();
+		return this.themeController;
 	}
 }

@@ -26,20 +26,21 @@
 						<td>${dView.theme.name}</td>
 						<td>${dView.theme.question}</td>
 						<td>
-							<select>
+							<select name="education_level">
 							<c:forEach var="educationLevel" items="${dView.ed}">
 								<option value="${educationLevel}">${educationLevel}</option>
 							</c:forEach>
 							</select>
 						</td>
 						<td>
-							<select>
+							<select name="valoration">
 							<c:forEach var="val" items="${dView.valorations}">
 								<option value="${val}">${val}</option>
 							</c:forEach>
 							</select>
 						</td>
 					</tr>
+					<input type="submit" value="vote"/>
 				</form>
 		</table>
 	<p>

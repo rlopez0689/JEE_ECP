@@ -3,7 +3,7 @@ package es.upm.miw.web.beans;
 import java.util.List;
 
 import es.upm.miw.persistence.models.entities.Theme;
-import es.upm.miw.web.controllers.DeleteThemeController;
+import es.upm.miw.web.controllers.ThemeController;
 
 public class ListView extends ViewBean{
 	private String message="Prueba";
@@ -34,7 +34,7 @@ public class ListView extends ViewBean{
 	}
 
 	public void setType(String type) {
-		if(type=="borrar")
+		if(type=="delete")
 			this.setMethodType("post");
 		this.type = type;
 	}
@@ -48,7 +48,7 @@ public class ListView extends ViewBean{
 	}
 
 	public void update() {
-    	DeleteThemeController deleteThemeController = this.getControllerFactory().getDeleteThemeController();
-    	this.themes=deleteThemeController.getThemes();
+    	ThemeController themeController = this.getControllerFactory().getThemeController();
+    	this.themes=themeController.getThemes();
     }
 }

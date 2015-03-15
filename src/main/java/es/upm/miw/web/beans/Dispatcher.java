@@ -8,7 +8,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import es.upm.miw.persistence.models.utils.Utils;
+
 import es.upm.miw.persistence.models.entities.Theme;
+import es.upm.miw.persistence.models.utils.EducationLevel;
 import es.upm.miw.web.controllers.ejbs.ControllerFactoryEJB;
 
 
@@ -109,7 +112,18 @@ public class Dispatcher extends HttpServlet {
     		request.setAttribute("listThemes", listView);
             break;  
         case "voteTheme":
-        	System.out.println("Entro a votoar");
+        	VoteView voteView = new VoteView();
+        	voteView.setControllerFactory(this.getControllerFactoryEJB());
+        	voteView.setIdTema(Integer.parseInt(request.getParameter("id")));
+        	voteView.getVote().setIp(Utils.getIpAddress(request));
+        	voteView.getVote().setNivel_estudios(EducationLevel.valueOf(request.getParameter("education_level")));
+        	voteView.getVote().setValoration(Integer.parseInt(request.getParameter("valoration")));
+        	voteView.procesar();
+        	ListView listview = new ListView();
+        	listview.setControllerFactory(this.getControllerFactoryEJB());
+    		request.setAttribute("listThemes", listview);
+    		listview.setType("vote");
+    		view = "listThemes";
         	break;
        }
         this.getServletContext().getRequestDispatcher(PATH_ROOT_VIEW + view + ".jsp")
