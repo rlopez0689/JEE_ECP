@@ -4,9 +4,12 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>Authroize Delere Theme</title>
 </head>
 <body>
-
+	<form action="/JEE_ECP/jsp/verifyCode" method='post'>
+			Code: <input name='code'  type="text"/>
+			<input type="submit" value="Verificar"/>
+		</form>
 </body>
 </html>

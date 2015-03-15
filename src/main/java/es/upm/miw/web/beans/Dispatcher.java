@@ -20,8 +20,6 @@ public class Dispatcher extends HttpServlet {
     
     private ControllerFactoryEJB cfEJB;
     
-    private DeleteView deleteThemesView;
-    
     public ControllerFactoryEJB getControllerFactoryEJB(){
     	if(cfEJB == null)
     		cfEJB = new ControllerFactoryEJB();
@@ -41,10 +39,10 @@ public class Dispatcher extends HttpServlet {
             request.setAttribute(action, addThemesView);
             view = action;
             break;    
-        case "deleteThemes":
-            deleteThemesView = new DeleteView();
-            deleteThemesView.setControllerFactory(this.getControllerFactoryEJB());
-            request.setAttribute(action, deleteThemesView);
+        case "authorizeThemes":
+        	AuthorizeView authorizeView = new AuthorizeView();
+            authorizeView.setControllerFactory(this.getControllerFactoryEJB());
+            request.setAttribute(action, authorizeView);
             view = action;
             break;    
         default:
@@ -71,15 +69,27 @@ public class Dispatcher extends HttpServlet {
         	request.setAttribute(action, addThemesView);
         	view = addThemesView.process();
             break;
+        case "verifyCode":
+        	AuthorizeView authorizeView = new AuthorizeView();
+        	authorizeView.setControllerFactory(this.getControllerFactoryEJB());
+        	System.out.println(request.getParameter("code"));
+        	authorizeView.setCode(request.getParameter("code"));
+        	view = authorizeView.authorize();
+        	if(authorizeView.isAuthorized()){
+        		ListView listView = new ListView();
+        		listView.setControllerFactory(this.getControllerFactoryEJB());
+        		request.setAttribute("listThemes", listView);
+        	}
+        	break;
         case "deleteThemes":
-        	deleteThemesView.setControllerFactory(this.getControllerFactoryEJB());
-        	System.out.println("Codigo en dispatcher: "+deleteThemesView.getCode());
-        	if(deleteThemesView.getCode()!=null && deleteThemesView.getCode()!="666" )
-        		deleteThemesView.deleteTheme(request.getParameter("id"));
-        	else
-        		deleteThemesView.setCode(request.getParameter("code"));
-        	request.setAttribute("deleteThemes", deleteThemesView);
-        	view = "deleteThemes";
+        	DeleteView deleteView = new DeleteView();
+        	deleteView.setControllerFactory(this.getControllerFactoryEJB());
+        	deleteView.deleteTheme(request.getParameter("id"));
+        	request.setAttribute("deleteThemes", deleteView);
+        	view = "listThemes";
+        	ListView listView = new ListView();
+    		listView.setControllerFactory(this.getControllerFactoryEJB());
+    		request.setAttribute("listThemes", listView);
             break;     
        }
         this.getServletContext().getRequestDispatcher(PATH_ROOT_VIEW + view + ".jsp")
