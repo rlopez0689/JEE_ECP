@@ -19,7 +19,7 @@
 				<th>Pregunta</th>
 			</tr>
 			<c:forEach var="theme" items="${dView.themes}">
-				<form action="/JEE_ECP/jsp/${dView.type}Themes" method='post'>
+				<form action="/JEE_ECP/jsp/${dView.type}Theme" method='${dView.methodType}'>
 					<input name='id' type='hidden' value='${theme.id}'/>
 					<tr>
 						<td>${theme.name}</td>

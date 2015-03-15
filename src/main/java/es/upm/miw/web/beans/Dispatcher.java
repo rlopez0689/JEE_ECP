@@ -45,13 +45,21 @@ public class Dispatcher extends HttpServlet {
             request.setAttribute(action, authorizeView);
             view = action;
             break;    
-        case "voteTheme":
+        case "voteThemes":
         	ListView listView = new ListView();
     		listView.setControllerFactory(this.getControllerFactoryEJB());
     		request.setAttribute("listThemes", listView);
     		listView.setType("vote");
     		view = "listThemes";
     		break;
+        case "voteTheme":
+        	VoteView voteView = new VoteView();
+        	voteView.setControllerFactory(this.getControllerFactoryEJB());
+        	request.setAttribute(action, voteView);
+        	voteView.setIdTema(Integer.parseInt(request.getParameter("id")));
+        	voteView.assignTheme();
+        	view = action;
+        	break;
         default:
             view = "home";
         }
@@ -89,7 +97,7 @@ public class Dispatcher extends HttpServlet {
         		request.setAttribute("listThemes", listView);
         	}
         	break;
-        case "deleteThemes":
+        case "deleteTheme":
         	DeleteView deleteView = new DeleteView();
         	deleteView.setControllerFactory(this.getControllerFactoryEJB());
         	deleteView.deleteTheme(request.getParameter("id"));
@@ -99,7 +107,10 @@ public class Dispatcher extends HttpServlet {
     		listView.setControllerFactory(this.getControllerFactoryEJB());
     		listView.setType("delete");
     		request.setAttribute("listThemes", listView);
-            break;     
+            break;  
+        case "voteTheme":
+        	System.out.println("Entro a votoar");
+        	break;
        }
         this.getServletContext().getRequestDispatcher(PATH_ROOT_VIEW + view + ".jsp")
         .forward(request, response);

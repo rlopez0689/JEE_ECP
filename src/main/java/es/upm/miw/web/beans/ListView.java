@@ -12,6 +12,8 @@ public class ListView extends ViewBean{
     
     private String type;
     
+    private String methodType="get";
+    
     public ListView() {
     }
 
@@ -32,7 +34,17 @@ public class ListView extends ViewBean{
 	}
 
 	public void setType(String type) {
+		if(type=="borrar")
+			this.setMethodType("post");
 		this.type = type;
+	}
+
+	public String getMethodType() {
+		return methodType;
+	}
+
+	public void setMethodType(String methodType) {
+		this.methodType = methodType;
 	}
 
 	public void update() {
