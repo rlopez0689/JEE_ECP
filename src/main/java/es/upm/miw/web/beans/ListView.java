@@ -10,6 +10,8 @@ public class ListView extends ViewBean{
 
     private List<Theme> themes;
     
+    private String type;
+    
     public ListView() {
     }
 
@@ -24,6 +26,14 @@ public class ListView extends ViewBean{
 	public void setThemes(List<Theme> theme) {
         this.themes = theme;
     }
+
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
 
 	public void update() {
     	DeleteThemeController deleteThemeController = this.getControllerFactory().getDeleteThemeController();

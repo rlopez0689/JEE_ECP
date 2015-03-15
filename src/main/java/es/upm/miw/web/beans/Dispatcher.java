@@ -49,6 +49,7 @@ public class Dispatcher extends HttpServlet {
         	ListView listView = new ListView();
     		listView.setControllerFactory(this.getControllerFactoryEJB());
     		request.setAttribute("listThemes", listView);
+    		listView.setType("vote");
     		view = "listThemes";
     		break;
         default:
@@ -84,6 +85,7 @@ public class Dispatcher extends HttpServlet {
         	if(authorizeView.isAuthorized()){
         		ListView listView = new ListView();
         		listView.setControllerFactory(this.getControllerFactoryEJB());
+        		listView.setType("delete");
         		request.setAttribute("listThemes", listView);
         	}
         	break;
@@ -95,6 +97,7 @@ public class Dispatcher extends HttpServlet {
         	view = "listThemes";
         	ListView listView = new ListView();
     		listView.setControllerFactory(this.getControllerFactoryEJB());
+    		listView.setType("delete");
     		request.setAttribute("listThemes", listView);
             break;     
        }
