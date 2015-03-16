@@ -2,9 +2,12 @@ package es.upm.miw.web.beans;
 
 import java.util.List;
 
+import javax.faces.bean.ManagedBean;
+
 import es.upm.miw.persistence.models.entities.Theme;
 import es.upm.miw.web.controllers.ThemeController;
 
+@ManagedBean
 public class ListView extends ViewBean{
 	private String message="Prueba";
 

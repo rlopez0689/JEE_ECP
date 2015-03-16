@@ -9,12 +9,9 @@
 	</h:head>
 	<h:body>
 		<h2>List <b>Themes</b></h2>
+		<h2>#{listView.update()}</h2>
 		<h:form>
-			<p:dataTable var="theme" value="#{listThemes.themes}">
-					<p:column headerText="Id">
-						<h:outputText value="#{theme.id}" />
-					</p:column>
-
+			<p:dataTable var="theme" value="#{listView.themes}">
 					<p:column headerText="Name">
 						<h:outputText value="#{theme.name}" />
 					</p:column>
