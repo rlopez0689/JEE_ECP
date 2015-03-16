@@ -41,7 +41,7 @@ public class ThemeDaoJpaTest {
 		themes_data.add(new Theme("ÀCual es el mejor videojuego de este a–o?", "Videjuegos"));
 		themes_data.add(new Theme("ÀPreguntas de deportes?", "Deportes"));
 	}
-	
+
 	@AfterClass
 	public static void DropTables(){
         em.getTransaction().begin();

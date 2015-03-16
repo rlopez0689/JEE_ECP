@@ -35,6 +35,7 @@ public class Dispatcher extends HttpServlet {
 
         String action = request.getPathInfo().substring(1);
         String view;
+        request.setCharacterEncoding("UTF-8");
         switch (action) {
         case "addTheme":
             AddView addThemesView = new AddView();
@@ -63,11 +64,13 @@ public class Dispatcher extends HttpServlet {
         	voteView.assignTheme();
         	view = action;
         	break;
-        case "SeeVotesView":
+        case "seeVotes":
         	SeeVotesView seeVotesView = new SeeVotesView();
         	seeVotesView.setControllerFactory(this.getControllerFactoryEJB());
         	request.setAttribute(action, seeVotesView);
         	seeVotesView.procesar();
+        	view = action;
+        	break;
         default:
             view = "home";
         }
@@ -81,6 +84,7 @@ public class Dispatcher extends HttpServlet {
             throws ServletException, IOException {
         String action = request.getPathInfo().substring(1);
         String view = "home";
+        request.setCharacterEncoding("UTF-8");
         switch (action) {
         case "addTheme":
         	Theme theme = new Theme();

@@ -18,7 +18,7 @@
 		<a href="/JEE_ECP/jsp/voteThemes">Votar</a>
 	</p>
 	<p>
-		<a href="/Web/jsp/#">Ver Votaciones</a>
+		<a href="/JEE_ECP/jsp/seeVotes">Ver Votaciones</a>
 	</p>
 </body>
 </html>

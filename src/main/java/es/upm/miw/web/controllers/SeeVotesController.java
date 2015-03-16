@@ -1,8 +1,8 @@
 package es.upm.miw.web.controllers;
 
 import java.util.List;
+import es.upm.miw.persistence.models.utils.ThemeValoration;
 
 public interface SeeVotesController {
-	public List<Object[]> getNormalVotes();	
-	public List<Object[]> getEducationVotes();
+	public List<ThemeValoration> getEducationVotes();
 }
