@@ -37,7 +37,7 @@ public class ControllerFactoryEJB extends ControllerFactory {
 	@Override
 	public SeeVotesController getSeeVotesController() {
 		if(seeVotesController == null)
-			seeVotesController = new SeeVotesController();
+			seeVotesController = new SeeVotesControllerEJB();
 		return this.seeVotesController;
 	}
 

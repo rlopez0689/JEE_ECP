@@ -8,4 +8,5 @@ public interface VoteDao extends GenericDao<Vote, Integer> {
 	public void deleteVotesByTheme(Integer id);
 	public List<Vote> getNumberOfVotesByTheme(Integer id);
 	public List<Object[]> getAverageVotesByEducationLevel();
+	public List<Object[]> getNumberOfVotes();
 }

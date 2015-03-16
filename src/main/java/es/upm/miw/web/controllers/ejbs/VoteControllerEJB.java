@@ -12,8 +12,6 @@ public class VoteControllerEJB implements VoteController {
 	}
 	
 	public boolean voteTheme(Vote vote){
-		System.out.println("------------");
-		System.out.println(vote);
 		DaoFactory.getFactory().getVoteDao().create(vote);
 		return true;
 	}

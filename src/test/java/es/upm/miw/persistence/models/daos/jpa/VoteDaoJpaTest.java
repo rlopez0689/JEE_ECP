@@ -39,7 +39,7 @@ public class VoteDaoJpaTest {
                 .createEntityManager();
         em.clear();
 	}
-/*	
+
 	@AfterClass
 	public static void DropTables(){
         em.getTransaction().begin();
@@ -47,7 +47,7 @@ public class VoteDaoJpaTest {
         em.createNativeQuery("drop table theme").executeUpdate();
         em.getTransaction().commit();
 	}
-*/	
+	
 	@Before
 	public void beforeTest(){
 		vote_data = new ArrayList<Vote>();

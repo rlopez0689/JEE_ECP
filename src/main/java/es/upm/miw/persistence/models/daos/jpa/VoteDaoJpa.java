@@ -52,6 +52,15 @@ public class VoteDaoJpa extends GenericDaoJpa<Vote, Integer> implements VoteDao 
         return result;
 		
 	}
+	
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Object[]> getNumberOfVotes(){
+		EntityManager em = DaoJpaFactory.getEntityManagerFactory().createEntityManager();
+		Query query = em.createQuery("SELECT sum(c.valoration), c.theme FROM vote c group by c.theme;");
+		List<Object[]> results = query.getResultList();
+		return results;
+	}
 
 	@SuppressWarnings("unchecked")
 	@Override

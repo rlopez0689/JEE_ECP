@@ -63,6 +63,11 @@ public class Dispatcher extends HttpServlet {
         	voteView.assignTheme();
         	view = action;
         	break;
+        case "SeeVotesView":
+        	SeeVotesView seeVotesView = new SeeVotesView();
+        	seeVotesView.setControllerFactory(this.getControllerFactoryEJB());
+        	request.setAttribute(action, seeVotesView);
+        	seeVotesView.procesar();
         default:
             view = "home";
         }

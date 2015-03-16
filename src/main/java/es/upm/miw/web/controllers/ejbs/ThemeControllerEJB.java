@@ -10,7 +10,6 @@ public class ThemeControllerEJB implements ThemeController {
 
 	@Override
 	public List<Theme> getThemes() {
-		System.out.println("Sacar temas");
         return DaoFactory.getFactory().getThemeDao().findAll();
 	}
 
