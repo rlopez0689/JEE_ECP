@@ -15,6 +15,7 @@ public class AddView extends ViewBean {
     private String prueba;
 
     public AddView() {
+    	this.theme = new Theme();
     }
 
     public String getMessage() {
@@ -35,7 +36,6 @@ public class AddView extends ViewBean {
 
 	public void setTheme(Theme theme) {
         this.theme = theme;
-        System.out.println(theme);
     }
 
     public void update() {
