@@ -1,5 +1,8 @@
 package es.upm.miw.web.beans;
 
+import javax.faces.bean.ManagedBean;
+
+@ManagedBean
 public class AuthorizeView extends ViewBean {
 	
 	private String message="Prueba";
@@ -22,13 +25,12 @@ public class AuthorizeView extends ViewBean {
 	}
 	
     public String authorize() {
-    	System.out.println(this.getCode()+" codigo");
         if(this.getCode().equals("666"))
         	return "listThemes";
         else
         	return "authorizeThemes";
     }
-    
+       
     public boolean isAuthorized(){
     	return this.getCode().equals("666");
     }
