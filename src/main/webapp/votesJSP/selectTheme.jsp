@@ -11,7 +11,7 @@
 	<h2>
 		List <b>Themes</b>
 	</h2>
-	<c:set var="dView" scope="request" value="${selectThemes}" />
+	<c:set var="dView" scope="request" value="${selectTheme}" />
 		<div>${dView.update()}</div>
 		<table>
 			<tr>

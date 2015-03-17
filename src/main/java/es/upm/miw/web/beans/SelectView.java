@@ -9,12 +9,12 @@ import es.upm.miw.persistence.models.entities.Theme;
 import es.upm.miw.web.controllers.ThemeController;
 
 @ManagedBean
-public class ListView extends ViewBean{
+public class SelectView extends ViewBean{
 	private String message="Prueba";
 
     private List<Theme> themes;
     
-    public ListView() {
+    public SelectView() {
     }
 
     public String getMessage() {

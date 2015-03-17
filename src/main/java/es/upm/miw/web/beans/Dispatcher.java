@@ -49,12 +49,11 @@ public class Dispatcher extends HttpServlet {
             request.setAttribute(action, authorizeView);
             view = action;
             break;    
-        case "voteThemes":
-        	ListView listView = new ListView();
-    		listView.setControllerFactory(this.getControllerFactoryEJB());
-    		request.setAttribute("listThemes", listView);
-    		listView.setType("vote");
-    		view = "listThemes";
+        case "selectTheme":
+        	SelectView selectView = new SelectView();
+        	selectView.setControllerFactory(this.getControllerFactoryEJB());
+    		request.setAttribute(action, selectView);
+    		view = action;
     		break;
         case "voteTheme":
         	VoteView voteView = new VoteView();
@@ -105,7 +104,6 @@ public class Dispatcher extends HttpServlet {
         	if(authorizeView.isAuthorized()){
         		ListView listView = new ListView();
         		listView.setControllerFactory(this.getControllerFactoryEJB());
-        		listView.setType("delete");
         		request.setAttribute("listThemes", listView);
         	}
         	break;
@@ -117,7 +115,6 @@ public class Dispatcher extends HttpServlet {
         	view = "listThemes";
         	ListView listView = new ListView();
     		listView.setControllerFactory(this.getControllerFactoryEJB());
-    		listView.setType("delete");
     		request.setAttribute("listThemes", listView);
             break;  
         case "voteTheme":
@@ -128,11 +125,10 @@ public class Dispatcher extends HttpServlet {
         	voteView.getVote().setNivel_estudios(EducationLevel.valueOf(request.getParameter("education_level")));
         	voteView.getVote().setValoration(Integer.parseInt(request.getParameter("valoration")));
         	voteView.procesar();
-        	ListView listview = new ListView();
-        	listview.setControllerFactory(this.getControllerFactoryEJB());
-    		request.setAttribute("listThemes", listview);
-    		listview.setType("vote");
-    		view = "listThemes";
+        	SelectView selectView = new SelectView();
+        	selectView.setControllerFactory(this.getControllerFactoryEJB());
+    		request.setAttribute("selectTheme", selectView);
+    		view = "selectTheme";
         	break;
        }
         this.getServletContext().getRequestDispatcher(PATH_ROOT_VIEW + view + ".jsp")

@@ -15,7 +15,7 @@
 		<a href="/JEE_ECP/jsp/authorizeThemes">Borrar Tema</a>
 	</p>
 	<p>
-		<a href="/JEE_ECP/jsp/voteThemes">Votar</a>
+		<a href="/JEE_ECP/jsp/selectTheme">Votar</a>
 	</p>
 	<p>
 		<a href="/JEE_ECP/jsp/seeVotes">Ver Votaciones</a>
