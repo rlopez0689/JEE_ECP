@@ -2,6 +2,7 @@ package es.upm.miw.web.beans;
 
 import java.util.List;
 
+import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 
@@ -14,7 +15,6 @@ public class ListView extends ViewBean{
 
     private List<Theme> themes;
     
-    @ManagedProperty(value = "#{authorizeView.getTypeList()}")
     private String type;
     
     private String methodType="get";
@@ -50,6 +50,11 @@ public class ListView extends ViewBean{
 
 	public void setMethodType(String methodType) {
 		this.methodType = methodType;
+	}
+	
+	@PostConstruct
+	public void init(){
+		this.update();
 	}
 
 	public void update() {
