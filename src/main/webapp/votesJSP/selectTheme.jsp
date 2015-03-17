@@ -11,7 +11,7 @@
 	<h2>
 		List <b>Themes</b>
 	</h2>
-	<c:set var="dView" scope="request" value="${listThemes}" />
+	<c:set var="dView" scope="request" value="${selectThemes}" />
 		<div>${dView.update()}</div>
 		<table>
 			<tr>
@@ -19,12 +19,12 @@
 				<th>Pregunta</th>
 			</tr>
 			<c:forEach var="theme" items="${dView.themes}">
-				<form action="/JEE_ECP/jsp/deleteTheme" method='post'>
+				<form action="/JEE_ECP/jsp/voteTheme" method='get'>
 					<input name='id' type='hidden' value='${theme.id}'/>
 					<tr>
 						<td>${theme.name}</td>
 						<td>${theme.question}</td>
-						<td><input type='submit' value='Delete'/></td>
+						<td><input type='submit' value='Vote'/></td>
 					</tr>
 				</form>
 			</c:forEach>
