@@ -14,6 +14,8 @@ public class SelectView extends ViewBean{
 
     private List<Theme> themes;
     
+    private Integer idTheme;
+    
     public SelectView() {
     }
 
@@ -33,9 +35,21 @@ public class SelectView extends ViewBean{
 	public void init(){
 		this.update();
 	}
-
+	
 	public void update() {
     	ThemeController themeController = this.getControllerFactory().getThemeController();
     	this.themes=themeController.getThemes();
     }
+
+	public Integer getIdTheme() {
+		return idTheme;
+	}
+
+	public void setIdTheme(Integer idTheme) {
+		this.idTheme = idTheme;
+	}
+	
+	public String direccion(){
+		return "voteView";
+	}
 }
