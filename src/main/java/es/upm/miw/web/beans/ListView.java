@@ -4,7 +4,6 @@ import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ManagedProperty;
 
 import es.upm.miw.persistence.models.entities.Theme;
 import es.upm.miw.web.controllers.ThemeController;
