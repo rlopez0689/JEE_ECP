@@ -9,6 +9,8 @@ public class AuthorizeView extends ViewBean {
 	
 	private String code;
 	
+	private String typeList;
+	
     public AuthorizeView() {
     }
 
@@ -25,8 +27,10 @@ public class AuthorizeView extends ViewBean {
 	}
 	
     public String authorize() {
-        if(this.getCode().equals("666"))
+        if(this.getCode().equals("666")){
+        	this.setTypeList("delete");
         	return "listThemes";
+        }
         else
         	return "authorizeThemes";
     }
@@ -34,4 +38,12 @@ public class AuthorizeView extends ViewBean {
     public boolean isAuthorized(){
     	return this.getCode().equals("666");
     }
+
+	public String getTypeList() {
+		return typeList;
+	}
+
+	public void setTypeList(String typeList) {
+		this.typeList = typeList;
+	}
 }

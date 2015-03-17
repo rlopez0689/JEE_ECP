@@ -23,7 +23,8 @@
 					<p:column headerText="Accion">
 						<p:commandLink id="accion"
 							actionListener="accion"
-							action="accion" 
+							action="accion"
+							value="#{listView.type}" 
 							ajax="false">
 							<f:param name="idTheme" value="#{theme.id}"/>
 						</p:commandLink>

@@ -2,9 +2,12 @@ package es.upm.miw.web.beans;
 
 import java.util.List;
 
+import javax.faces.bean.ManagedBean;
+
 import es.upm.miw.persistence.models.utils.ThemeValoration;
 import es.upm.miw.web.controllers.SeeVotesController;
 
+@ManagedBean
 public class SeeVotesView extends ViewBean {
 	
 	private List<ThemeValoration> groupVotes;

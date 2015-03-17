@@ -3,6 +3,7 @@ package es.upm.miw.web.beans;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
 
 import es.upm.miw.persistence.models.entities.Theme;
 import es.upm.miw.web.controllers.ThemeController;
@@ -13,6 +14,7 @@ public class ListView extends ViewBean{
 
     private List<Theme> themes;
     
+    @ManagedProperty(value = "#{authorizeView.getTypeList()}")
     private String type;
     
     private String methodType="get";

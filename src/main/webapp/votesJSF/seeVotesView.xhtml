@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+	<h:head>
+		<title>List Themes</title>
+	</h:head>
+	<h:body>
+		<h2>List <b>Themes</b></h2>
+		<h2>#{seeVotesView.procesar()}</h2>
+		<h:form>
+			<p:dataTable var="group" value="#{seeVotesView.groupVotes}">
+					<p:column headerText="Name">
+						<h:outputText value="#{group.theme.name}" />
+					</p:column>
+					<p:column headerText="Votes">
+						<h:outputText value="#{group.valoration}" />
+					</p:column>
+					<p:column headerText="Education">
+						<p:dataTable var="education" value="#{group.educationAverageList}">
+							<p:column headerText="Average">
+								<h:outputText value="#{education.average}" />
+							</p:column>
+							<p:column headerText="Level">
+								<h:outputText value="#{education.ed}" />
+							</p:column>
+						</p:dataTable>	
+					</p:column>
+				</p:dataTable>	
+		</h:form>
+	</h:body>
+</html>
