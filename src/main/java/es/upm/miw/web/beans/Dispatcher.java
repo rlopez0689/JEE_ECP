@@ -11,7 +11,6 @@ import javax.servlet.http.HttpServletResponse;
 import es.upm.miw.persistence.models.utils.Utils;
 
 import es.upm.miw.persistence.models.entities.Theme;
-import es.upm.miw.persistence.models.utils.EducationLevel;
 import es.upm.miw.web.controllers.ejbs.ControllerFactoryEJB;
 
 
