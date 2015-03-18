@@ -87,12 +87,14 @@ public class Vote {
                 && ip.equals(other.ip) && theme.getId().equals(other.theme.getId());
 	}
 	
+	
 	@Override
 	public String toString() {
-		return "Voto [id=" + id + ", nivel_estudios=" + education_level
-				+ ", ip=" + ip + ", tema="+ theme + "]";
-	}	
-	
+		return "Vote [id=" + id + ", education_level=" + education_level
+				+ ", ip=" + ip + ", valoration=" + valoration + ", theme="
+				+ theme + "]";
+	}
+
 	@Override
     public int hashCode() {
         int hash = 1;
