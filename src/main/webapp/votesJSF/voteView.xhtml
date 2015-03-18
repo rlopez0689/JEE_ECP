@@ -11,29 +11,20 @@
 		<h2>Vote <b>Theme</b></h2>
 		<h2>#{voteView.update()}</h2>
 		<h:form>
-			<h:panelGrid id="grid1" columns="6" cellpadding="5">
-					<p:column headerText="Id">
-						<h:outputText value="#{voteView.theme.id}" />
-					</p:column>
-					<p:column headerText="Name">
-						<h:outputText value="#{voteView.theme.name}" />
-					</p:column>
-
-					<p:column headerText="Question">
-						<h:outputText value="#{voteView.theme.question}" />
-					</p:column>	
-					<p:column headerText="Question">	
-						<p:selectOneMenu value="#{voteView.selectedEd}"
-								required="true">
-								<f:selectItems value="#{voteView.ed}" />
-							</p:selectOneMenu>
-					</p:column>
-					<p:column headerText="Accion">
-						  <p:commandButton  value="vote" actionListener="#{voteView.procesar}">
-						  		<f:param name="id" value="#{voteView.theme.id}" />
-						  </p:commandButton>					
-					</p:column>
-				</h:panelGrid>
+			<h:panelGrid id="grid1" columns="7" cellpadding="5">
+				<h:outputText value="#{voteView.theme.name}" />
+				<h:outputText value="#{voteView.theme.question}" />
+				
+				<p:rating value="#{voteView.selectedVal}" stars="10" />
+				
+				<p:selectOneMenu value="#{voteView.selectedEd}" required="true">
+					<f:selectItems value="#{voteView.ed}" />
+				</p:selectOneMenu>
+				
+				<p:commandButton  value="vote" action="#{voteView.direccion}" actionListener="#{voteView.procesar}">
+					<f:param name="id" value="#{voteView.theme.id}" />
+				</p:commandButton>					
+			</h:panelGrid>
 		</h:form>
 		<br/>
 		<h:link value="Back to Home" outcome="home" />

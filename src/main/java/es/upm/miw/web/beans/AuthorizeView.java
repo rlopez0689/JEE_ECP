@@ -2,6 +2,8 @@ package es.upm.miw.web.beans;
 
 import javax.faces.bean.ManagedBean;
 
+import es.upm.miw.web.controllers.DeleteThemeController;
+
 @ManagedBean
 public class AuthorizeView extends ViewBean {
 	
@@ -27,7 +29,7 @@ public class AuthorizeView extends ViewBean {
 	}
 	
     public String authorize() {
-        if(this.getCode().equals("666")){
+        if(this.isAuthorized()){
         	this.setTypeList("delete");
         	return "listThemes";
         }
@@ -36,7 +38,8 @@ public class AuthorizeView extends ViewBean {
     }
        
     public boolean isAuthorized(){
-    	return this.getCode().equals("666");
+    	DeleteThemeController deleteThemeController = this.getControllerFactory().getDeleteThemeController();
+        return deleteThemeController.authorizeDelete(this.getCode());
     }
 
 	public String getTypeList() {

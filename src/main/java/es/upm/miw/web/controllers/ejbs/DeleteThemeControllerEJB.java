@@ -12,4 +12,9 @@ public class DeleteThemeControllerEJB extends ThemeControllerEJB implements Dele
 		return false;
 	}
 
+	@Override
+	public boolean authorizeDelete(String code) {
+		return code.equals("666");
+	}
+
 }

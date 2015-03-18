@@ -1,5 +1,6 @@
 package es.upm.miw.web.beans;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -17,7 +18,7 @@ public class VoteView extends ViewBean {
 		@ManagedProperty("#{param.id}")
 		private int idTema;
 		private Vote vote;
-		private Integer[] valorations = new Integer[11];
+		private List<Integer> valorations = new ArrayList<Integer>();
 		private List<EducationLevel> ed;
 		private String selectedEd;
 		private String selectedVal;
@@ -25,7 +26,6 @@ public class VoteView extends ViewBean {
 		private Theme theme;
 				
 		public VoteView(){
-			System.out.println("klasklsaklsa");
 			vote = new Vote();
 			theme = new Theme();
 		}
@@ -68,19 +68,19 @@ public class VoteView extends ViewBean {
 			this.ed = ed;
 		}
 
-		public Integer[] getValorations() {
+		public List<Integer> getValorations() {
 			return valorations;
 		}
 
-		public void setValorations(Integer[] valorations) {
+		public void setValorations(List<Integer> valorations) {
 			this.valorations = valorations;
 		}
 
 		public void update(){
-			this.ed = Arrays.asList(EducationLevel.values());
-			for(int i=0;i<11;i++){
-				this.valorations[i]=i;
+			for(int i=0;i<10;i++){
+				this.valorations.add(i);
 			}
+			this.ed = Arrays.asList(EducationLevel.values());
 		}
 		
 		public void assignTheme(){
@@ -89,22 +89,17 @@ public class VoteView extends ViewBean {
 		}
 		
 		public String direccion(){
-			return "voteView";
+			return "selectTheme";
 		}
 
 		public void procesar(){
-			System.out.println("ESTE ES EL TEMA A PROCESAR");
 			VoteController voteController = this.getControllerFactory().getVoteController();
 			this.assignTheme();
-			System.out.println(this.getSelectedEd());
-			System.out.println(this.getTheme());
 			this.vote.setNivel_estudios(EducationLevel.valueOf(this.getSelectedEd()));
 			this.vote.setIp(this.getUsedIp());
 			this.vote.setValoration(Integer.parseInt(this.getSelectedVal()));
 			this.vote.setTema(this.theme);
-			System.out.println("Vote Controler");
-			System.out.println(this.getVote());
-			//voteController.voteTheme(this.vote);
+			voteController.voteTheme(this.vote);
 		}
 
 		public String getSelectedEd() {

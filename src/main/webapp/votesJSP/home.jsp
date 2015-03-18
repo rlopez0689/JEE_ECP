@@ -20,5 +20,7 @@
 	<p>
 		<a href="/JEE_ECP/jsp/seeVotes">Ver Votaciones</a>
 	</p>
+	<br/></br/>
+	<a href="/JEE_ECP/index.html">Back to index</a>
 </body>
 </html>
