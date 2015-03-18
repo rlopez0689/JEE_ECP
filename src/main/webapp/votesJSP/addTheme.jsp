@@ -13,7 +13,6 @@
 	</h2>
 	<c:set var="aView" scope="request" value="${addTheme}" />
 	<form action="/JEE_ECP/jsp/addTheme" method="post">
-		<p>${aView.message}</p>
 		<p>
 			Name: <input name="name" type="text"
 				value="${aView.theme.name}" />
