@@ -121,9 +121,9 @@ public class Dispatcher extends HttpServlet {
         	VoteView voteView = new VoteView();
         	voteView.setControllerFactory(this.getControllerFactoryEJB());
         	voteView.setIdTema(Integer.parseInt(request.getParameter("id")));
-        	voteView.getVote().setIp(Utils.getIpAddress(request));
-        	voteView.getVote().setNivel_estudios(EducationLevel.valueOf(request.getParameter("education_level")));
-        	voteView.getVote().setValoration(Integer.parseInt(request.getParameter("valoration")));
+        	voteView.setSelectedEd(request.getParameter("education_level"));
+        	voteView.setSelectedVal(request.getParameter("valoration"));
+        	voteView.setUsedIp(Utils.getIpAddress(request));
         	voteView.procesar();
         	SelectView selectView = new SelectView();
         	selectView.setControllerFactory(this.getControllerFactoryEJB());

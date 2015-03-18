@@ -29,8 +29,8 @@
 							</p:selectOneMenu>
 					</p:column>
 					<p:column headerText="Accion">
-						  <p:commandButton  value="vote" action="#{voteView.procesar}">
-						  	<h:outputText value="Vote" />
+						  <p:commandButton  value="vote" actionListener="#{voteView.procesar}">
+						  		<f:param name="id" value="#{voteView.theme.id}" />
 						  </p:commandButton>					
 					</p:column>
 				</h:panelGrid>

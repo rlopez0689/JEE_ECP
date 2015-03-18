@@ -1,6 +1,5 @@
 package es.upm.miw.web.beans;
 
-import java.io.Serializable;
 import java.util.Arrays;
 import java.util.List;
 
@@ -21,6 +20,8 @@ public class VoteView extends ViewBean {
 		private Integer[] valorations = new Integer[11];
 		private List<EducationLevel> ed;
 		private String selectedEd;
+		private String selectedVal;
+		private String usedIp;
 		private Theme theme;
 				
 		public VoteView(){
@@ -96,8 +97,13 @@ public class VoteView extends ViewBean {
 			VoteController voteController = this.getControllerFactory().getVoteController();
 			this.assignTheme();
 			System.out.println(this.getSelectedEd());
-			System.out.println(this.getIdTema());
+			System.out.println(this.getTheme());
+			this.vote.setNivel_estudios(EducationLevel.valueOf(this.getSelectedEd()));
+			this.vote.setIp(this.getUsedIp());
+			this.vote.setValoration(Integer.parseInt(this.getSelectedVal()));
 			this.vote.setTema(this.theme);
+			System.out.println("Vote Controler");
+			System.out.println(this.getVote());
 			//voteController.voteTheme(this.vote);
 		}
 
@@ -107,5 +113,21 @@ public class VoteView extends ViewBean {
 
 		public void setSelectedEd(String selectedEd) {
 			this.selectedEd = selectedEd;
+		}
+
+		public String getSelectedVal() {
+			return selectedVal;
+		}
+
+		public void setSelectedVal(String selectedVal) {
+			this.selectedVal = selectedVal;
+		}
+
+		public String getUsedIp() {
+			return usedIp;
+		}
+
+		public void setUsedIp(String usedIp) {
+			this.usedIp = usedIp;
 		}
 }
