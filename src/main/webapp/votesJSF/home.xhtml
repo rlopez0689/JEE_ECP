@@ -8,17 +8,21 @@
 	xmlns:p="http://primefaces.org/ui">
 <h:body>
 	<f:view locale="#{i18n.locale}">
+	<h:form>
+ 			<h:commandLink action="#{i18n.change('es')}" value="Español" /> | 
+            <h:commandLink action="#{i18n.change('en')}" value="English" />
+	</h:form>
 		<p>
-			<p:link href="addTheme.xhtml" value="#{i18n.home_add}">Add Theme</p:link>
+			<p:link href="addTheme.xhtml" value="#{msgs.home_add}">Add Theme</p:link>
 		</p>
          <p>
-             <p:link href="authorizeThemes.xhtml" value="#{i18n.home_delete}">Delete Theme</p:link>
+             <p:link href="authorizeThemes.xhtml" value="#{msgs.home_delete}">Delete Theme</p:link>
          </p>
          <p>
-             <p:link href="selectTheme.xhtml" value="#{i18n.home_vote}">Vote</p:link>
+             <p:link href="selectTheme.xhtml" value="#{msgs.home_vote}">Vote</p:link>
          </p>
          <p>
-             <p:link href="seeVotesView.xhtml" value="#{i18n.home_seeVotes}">See Votes</p:link>
+             <p:link href="seeVotesView.xhtml" value="#{msgs.home_seeVotes}">See Votes</p:link>
          </p>
 		<br/><br/>
 		<a href="/JEE_ECP/index.html">Back to index</a>

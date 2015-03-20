@@ -5,11 +5,11 @@
     version="2.2">
 	<application>
 		<locale-config>
-			<default-locale>es</default-locale>
-			<supported-locale>en</supported-locale>
+			<default-locale>en</default-locale>
+			<supported-locale>es</supported-locale>
 		</locale-config>
 		<resource-bundle>
-			<base-name>i18n.messages</base-name>
+			<base-name>es.upm.miw.i18n.messages</base-name>
 			<var>msgs</var>
 		</resource-bundle>
 	</application>
