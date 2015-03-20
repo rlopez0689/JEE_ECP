@@ -6,27 +6,30 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui">
-<h:body>
-	<f:view locale="#{i18n.locale}">
-	<h:form>
- 			<h:commandLink action="#{i18n.change('es')}" value="Español" /> | 
-            <h:commandLink action="#{i18n.change('en')}" value="English" />
-	</h:form>
-		<p>
-			<p:link href="addTheme.xhtml" value="#{msgs.home_add}">Add Theme</p:link>
-		</p>
-         <p>
-             <p:link href="authorizeThemes.xhtml" value="#{msgs.home_delete}">Delete Theme</p:link>
-         </p>
-         <p>
-             <p:link href="selectTheme.xhtml" value="#{msgs.home_vote}">Vote</p:link>
-         </p>
-         <p>
-             <p:link href="seeVotesView.xhtml" value="#{msgs.home_seeVotes}">See Votes</p:link>
-         </p>
-		<br/><br/>
-		<a href="/JEE_ECP/index.html">Back to index</a>
-	</f:view>
+<h:body>	
+	<ui:composition template="base.xhtml">	 
+		<ui:param name="hideFooter" value="true" />   
+	    <ui:define name="header">
+	    	<h4>Home</h4>
+	    </ui:define>
+    	
+    	<ui:define name="content">
+	        <p>
+				<p:link href="addTheme.xhtml" value="#{msgs.home_add}"></p:link>
+			</p>
+	        <p>
+	             <p:link href="authorizeThemes.xhtml" value="#{msgs.home_delete}"></p:link>
+	        </p>
+	        <p>
+	             <p:link href="selectTheme.xhtml" value="#{msgs.home_vote}"></p:link>
+	        </p>
+	        <p>
+	             <p:link href="seeVotesView.xhtml" value="#{msgs.home_seeVotes}"></p:link>
+	        </p>
+			<br/><br/>
+			<p:button href="/index.html" value="#{msgs.back_index}" />
+    	</ui:define>
+	</ui:composition>
 </h:body>
 
 </html>

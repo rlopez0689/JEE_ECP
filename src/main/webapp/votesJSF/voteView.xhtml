@@ -3,6 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui">
 	<h:head>
 		<title>Vote Theme</title>
@@ -10,23 +11,37 @@
 	<h:body>
 		<h2>Vote <b>Theme</b></h2>
 		<h2>#{voteView.update()}</h2>
-		<h:form>
-			<h:panelGrid id="grid1" columns="7" cellpadding="5">
-				<h:outputText value="#{voteView.theme.name}" />
-				<h:outputText value="#{voteView.theme.question}" />
-				
-				<p:rating value="#{voteView.selectedVal}" stars="10" />
-				
-				<p:selectOneMenu value="#{voteView.selectedEd}" required="true">
-					<f:selectItems value="#{voteView.ed}" />
-				</p:selectOneMenu>
-				
-				<p:commandButton  value="vote" action="#{voteView.direccion}" actionListener="#{voteView.procesar}">
-					<f:param name="id" value="#{voteView.theme.id}" />
-				</p:commandButton>					
-			</h:panelGrid>
-		</h:form>
-		<br/>
-		<h:link value="Back to Home" outcome="home" />
+		<ui:composition template="base.xhtml">	 
+		<ui:param name="hideHeader" value="true" />     
+	    <ui:define name="header">
+	    	<h4>#{msgs.vote_title}</h4>
+			<br/><br/>
+	    </ui:define>   	
+    	<ui:define name="content">
+	        <h:form>
+				<h:panelGrid id="grid1" columns="5" cellpadding="5" border="1">
+					<h:outputText value="#{msgs.theme_name}" />
+					<h:outputText value="#{msgs.theme_question}" />
+					<h:outputText value="#{msgs.theme_valoration}" />
+					<h:outputText value="#{msgs.theme_education}" />
+					<h:outputText value="#{msgs.column_action}" />
+					
+					<h:outputText value="#{voteView.theme.name}" />
+					<h:outputText value="#{voteView.theme.question}" />
+					
+					<p:rating value="#{voteView.selectedVal}" stars="10" />
+					
+					<p:selectOneMenu value="#{voteView.selectedEd}" required="true">
+						<f:selectItems value="#{voteView.ed}" />
+					</p:selectOneMenu>
+					
+					<p:commandButton  value="#{msgs.vote_title}" action="#{voteView.direccion}" actionListener="#{voteView.procesar}">
+						<f:param name="id" value="#{voteView.theme.id}" />
+					</p:commandButton>					
+				</h:panelGrid>
+			</h:form>
+		<br/><br/>
+    	</ui:define>    	
+	</ui:composition>
 	</h:body>
 </html>

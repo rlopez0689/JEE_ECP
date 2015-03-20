@@ -3,28 +3,34 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui">
 	<h:head>
 		<title>List Themes</title>
 	</h:head>
 	<h:body>
 	<h2>#{selectView.update()}</h2>
-		<h2>List <b>Themes</b></h2>
-			<p:dataTable var="theme" value="#{selectView.themes}">
-					<p:column headerText="Name">
+	<ui:composition template="base.xhtml">	    
+	    <ui:define name="header">
+	    	<h4>#{msgs.list_title}</h4>
+	    </ui:define>   	
+    	<ui:define name="content">
+	        <p:dataTable var="theme" value="#{selectView.themes}">
+					<p:column headerText="#{msgs.theme_name}">
 						<h:outputText value="#{theme.name}" />
 					</p:column>
 
-					<p:column headerText="Question">
+					<p:column headerText="#{msgs.theme_question}">
 						<h:outputText value="#{theme.question}" />
 					</p:column>			
-					<p:column headerText="Accion">
-						  <h:link value="Vote" outcome="voteView" id="select#{theme.id}">
+					<p:column headerText="#{msgs.column_action}">
+						  <h:link value="#{msgs.vote_title}" outcome="voteView" id="select#{theme.id}">
 						  	<f:param name="id" value="#{theme.id}" />
-						  </h:link>					
+						  </h:link>				
 					</p:column>
 				</p:dataTable>	
-		<br/>
-		<h:link value="Back to Home" outcome="home" />
+		<br/><br/>
+    	</ui:define>
+	</ui:composition>
 	</h:body>
 </html>

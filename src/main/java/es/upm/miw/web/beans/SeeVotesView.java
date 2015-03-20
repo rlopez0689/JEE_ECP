@@ -2,6 +2,7 @@ package es.upm.miw.web.beans;
 
 import java.util.List;
 
+import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 
 import es.upm.miw.persistence.models.utils.ThemeValoration;
@@ -20,7 +21,9 @@ public class SeeVotesView extends ViewBean {
 		this.groupVotes = groupVotes;
 	}
 	
+	@PostConstruct
 	public void procesar() {
+		System.out.println("Procesar");
 		SeeVotesController voteController = this.getControllerFactory().getSeeVotesController();
 		this.setgroupVotes(voteController.getEducationVotes());
 	}

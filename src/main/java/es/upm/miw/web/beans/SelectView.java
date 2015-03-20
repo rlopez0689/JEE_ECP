@@ -4,17 +4,19 @@ import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.RequestScoped;
 
 import es.upm.miw.persistence.models.entities.Theme;
 import es.upm.miw.web.controllers.ThemeController;
 
 @ManagedBean
+@RequestScoped
 public class SelectView extends ViewBean{
 	private String message="Prueba";
 
     private List<Theme> themes;
     
-    private Integer idTheme;
+    private String idTheme;
     
     public SelectView() {
     }
@@ -41,15 +43,20 @@ public class SelectView extends ViewBean{
     	this.themes=themeController.getThemes();
     }
 
-	public Integer getIdTheme() {
+	public String getIdTheme() {
 		return idTheme;
 	}
 
-	public void setIdTheme(Integer idTheme) {
+	public void setIdTheme(String idTheme) {
 		this.idTheme = idTheme;
 	}
 	
 	public String direccion(){
+		return "voteView";
+	}
+	
+	public String process(String id){
+		this.idTheme = id;
 		return "voteView";
 	}
 }

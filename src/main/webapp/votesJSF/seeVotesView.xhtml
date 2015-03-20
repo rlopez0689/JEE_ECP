@@ -3,34 +3,36 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui">
-	<h:head>
-		<title>List Themes</title>
-	</h:head>
 	<h:body>
-		<h2>List <b>Themes</b></h2>
-		<h2>#{seeVotesView.procesar()}</h2>
-		<h:form>
-			<p:dataTable var="group" value="#{seeVotesView.groupVotes}">
-					<p:column headerText="Name">
-						<h:outputText value="#{group.theme.name}" />
-					</p:column>
-					<p:column headerText="Votes">
-						<h:outputText value="#{group.valoration}" />
-					</p:column>
-					<p:column headerText="Education">
-						<p:dataTable var="education" value="#{group.educationAverageList}">
-							<p:column headerText="Average">
-								<h:outputText value="#{education.average}" />
-							</p:column>
-							<p:column headerText="Level">
-								<h:outputText value="#{education.ed}" />
-							</p:column>
-						</p:dataTable>	
-					</p:column>
-				</p:dataTable>	
-		</h:form>
-		<br/>
-		<h:link value="Back to Home" outcome="home" />
+		<ui:composition template="base.xhtml">	    
+	    	<ui:define name="header">
+	    		<h4>#{msgs.see_title}</h4>
+	    	</ui:define> 	
+    		<ui:define name="content">
+	        	<h:form>
+					<p:dataTable var="group" value="#{seeVotesView.groupVotes}">
+						<p:column headerText="#{msgs.theme_name}">
+							<h:outputText value="#{group.theme.name}" />
+						</p:column>
+						<p:column headerText="#{msgs.theme_valorarion}">
+							<h:outputText value="#{group.valoration}" />
+						</p:column>
+						<p:column headerText="#{msgs.theme_education}">
+							<p:dataTable var="education" value="#{group.educationAverageList}">
+								<p:column headerText="#{msgs.theme_average}">
+									<h:outputText value="#{education.average}" />
+								</p:column>
+								<p:column headerText="#{msgs.theme_level}">
+									<h:outputText value="#{education.ed}" />
+								</p:column>
+							</p:dataTable>	
+						</p:column>
+					</p:dataTable>	
+				</h:form>
+			<br/><br/>
+    		</ui:define>   	
+		</ui:composition>
 	</h:body>
 </html>
