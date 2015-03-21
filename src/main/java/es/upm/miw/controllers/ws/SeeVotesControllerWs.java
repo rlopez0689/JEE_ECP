@@ -15,7 +15,6 @@ public class SeeVotesControllerWs extends ControllerWs implements SeeVotesContro
 		if(wsManager.read()){
 			return wsManager.entity(ThemeValorationWrapper.class).getlistThemeValoration();
 		}
-		return null;
-		
+		return null;		
 	}
 }

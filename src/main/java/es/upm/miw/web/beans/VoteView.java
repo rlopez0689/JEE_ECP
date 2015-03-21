@@ -7,10 +7,13 @@ import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
+import javax.faces.context.FacesContext;
+import javax.servlet.http.HttpServletRequest;
 
 import es.upm.miw.persistence.models.entities.Theme;
 import es.upm.miw.persistence.models.entities.Vote;
 import es.upm.miw.persistence.models.utils.EducationLevel;
+import es.upm.miw.persistence.models.utils.Utils;
 import es.upm.miw.web.controllers.VoteController;
 
 @ManagedBean
@@ -93,6 +96,9 @@ public class VoteView extends ViewBean {
 		}
 
 		public void procesar(){
+			FacesContext facesContext = FacesContext.getCurrentInstance();
+			if(facesContext!=null)
+				this.setUsedIp(Utils.getIpAddress((HttpServletRequest) facesContext.getExternalContext().getRequest()));
 			VoteController voteController = this.getControllerFactory().getVoteController();
 			this.assignTheme();
 			this.vote.setNivel_estudios(EducationLevel.valueOf(this.getSelectedEd()));
