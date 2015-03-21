@@ -5,12 +5,14 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.xml.bind.annotation.XmlRootElement;
 
 import org.eclipse.persistence.annotations.CascadeOnDelete;
 
 import es.upm.miw.persistence.models.utils.EducationLevel;
 
 @Entity
+@XmlRootElement
 public class Vote {
 	public static final String ID = "ID";
 	

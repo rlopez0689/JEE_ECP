@@ -1,6 +1,6 @@
 package es.upm.miw.ws;
 
 public interface ThemeUris {
-	String PATH_THEMES = "/themes";
-	String PATH_VOTES = "/{id}";
+	public String PATH_THEMES = "/themes";
+	public String PATH_ID = "/{id}";
 }
