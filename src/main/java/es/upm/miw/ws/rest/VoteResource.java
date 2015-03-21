@@ -34,4 +34,5 @@ public class VoteResource {
 		themeValorationWrapper.setlistThemeValoration(selectedVotesList);
 		return Response.ok(themeValorationWrapper).build();
 	}
+	
 }
