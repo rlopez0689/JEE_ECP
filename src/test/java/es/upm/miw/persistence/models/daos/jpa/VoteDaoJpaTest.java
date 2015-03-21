@@ -129,5 +129,6 @@ public class VoteDaoJpaTest {
 		
 		numberVotes = daoVote.getNumberOfVotes(vote_data.get(0).getTema());
 		assertEquals(numberVotes.intValue(), 0);
+		
 	}
 }
