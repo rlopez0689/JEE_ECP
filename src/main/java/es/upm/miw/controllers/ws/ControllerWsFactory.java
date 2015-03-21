@@ -10,11 +10,14 @@ import es.upm.miw.web.controllers.VoteController;
 public class ControllerWsFactory extends ControllerFactory {
 	
 	private SeeVotesController seeVotesController;
+	private AddThemeController addThemeController;
 	
 	@Override
 	public AddThemeController getAddThemeController() {
-		// TODO Auto-generated method stub
-		return null;
+		if (addThemeController == null) {
+			addThemeController = new AddThemeControllerWs();
+        }
+        return addThemeController;
 	}
 
 	@Override

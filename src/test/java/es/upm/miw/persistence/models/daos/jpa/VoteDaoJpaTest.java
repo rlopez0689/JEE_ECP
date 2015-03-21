@@ -51,9 +51,16 @@ public class VoteDaoJpaTest {
 	@Before
 	public void beforeTest(){
 		vote_data = new ArrayList<Vote>();
-		vote_data.add(new Vote(EducationLevel.MASTERSDEGREE, "127.0.0.1",1,new Theme("ÀQuien es el mejor deportista?", "Deportes")));
-		vote_data.add(new Vote(EducationLevel.BACHELORDEGREE, "255.0.0.1",3, new Theme("ÀQuien es el mejor musico?", "Musica")));
-		vote_data.add(new Vote(EducationLevel.DOCTORALDEGREE, "255.255.255.5",9, new Theme("ÀPreguntas de deportes?", "Deportes")));
+		Theme theme1 = new Theme("ÀQuien es el mejor deportista?", "Deportes");
+		Theme theme2 = new Theme("ÀQuien es el mejor musico?", "Musica");
+		Theme theme3 = new Theme("ÀPreguntas de deportes?", "Deportes");
+		daoTheme.create(theme1);
+		daoTheme.create(theme2);
+		daoTheme.create(theme3);
+		vote_data.add(new Vote(EducationLevel.MASTERSDEGREE, "127.0.0.1",1, theme1));
+		vote_data.add(new Vote(EducationLevel.BACHELORDEGREE, "255.0.0.1",3, theme2));
+		vote_data.add(new Vote(EducationLevel.DOCTORALDEGREE, "255.255.255.5",9, theme3));
+		vote_data.add(new Vote(EducationLevel.BACHELORDEGREE, "255.255.255.5",4, theme1));
 		for(int i=0;i<vote_data.size();i++){
 			daoVote.create(vote_data.get(i));	
 		}
@@ -105,5 +112,22 @@ public class VoteDaoJpaTest {
 		Vote updated_value = daoVote.read(update_value.getId());
 		assertEquals(updated_value.getIp(), ip);
 		assertEquals(updated_value.getNivel_estudios(), ed);
+	}
+	
+	@Test
+	public void TestGetNumberOfVotes(){
+		Integer numberVotes = daoVote.getNumberOfVotes(vote_data.get(0).getTema());
+		assertEquals(numberVotes.intValue(), 2);
+	}
+	
+	@Test
+	public void TestDeleteVotesByTheme(){
+		Integer numberVotes = daoVote.getNumberOfVotes(vote_data.get(0).getTema());
+		assertEquals(numberVotes.intValue(), 2);
+		
+		daoVote.deleteVotesByTheme(vote_data.get(0).getTema().getId());
+		
+		numberVotes = daoVote.getNumberOfVotes(vote_data.get(0).getTema());
+		assertEquals(numberVotes.intValue(), 0);
 	}
 }
