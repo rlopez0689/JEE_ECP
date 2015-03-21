@@ -10,4 +10,5 @@ public class AddThemeControllerWs extends ControllerWs implements AddThemeContro
 	public boolean addTheme(Theme theme) {
 		return ControllerWs.buildWebServiceManager(ThemeUris.PATH_THEMES).create(theme);
 	}
+	
 }
