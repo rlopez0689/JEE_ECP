@@ -1,11 +1,13 @@
 package es.upm.miw.ws.rest;
 
 import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
@@ -32,7 +34,6 @@ public class ThemeResource {
     @Consumes(MediaType.APPLICATION_XML)
 	@Produces({MediaType.APPLICATION_XML})
     public Response read(@PathParam("id") Integer id) {
-		System.out.println("Entro");
         Theme theme = DaoFactory.getFactory().getThemeDao().read(id);
         return Response.ok(theme).build();
     }
@@ -41,9 +42,19 @@ public class ThemeResource {
     @Consumes(MediaType.APPLICATION_XML)
     @Produces({MediaType.APPLICATION_XML})
     public Response readAll() {
-    	System.out.println("Entro Todos");
 		ThemeWrapper themeWrapper = new ThemeWrapper();
         themeWrapper.setListTheme(DaoFactory.getFactory().getThemeDao().findAll());
         return Response.ok(themeWrapper).build();
+    }
+    
+    @DELETE
+    @Consumes(MediaType.APPLICATION_XML)
+    @Produces({MediaType.APPLICATION_XML})
+    public Response delete(@PathParam("id") Integer id, @QueryParam("code") String code) {
+    	if(code=="666"){
+	    	DaoFactory.getFactory().getThemeDao().deleteById(id);
+	        return Response.ok("Deleted").build();
+        }
+    	return Response.noContent().build();
     }
 }
