@@ -8,7 +8,9 @@ import es.upm.miw.web.controllers.ThemeController;
 import es.upm.miw.web.controllers.VoteController;
 
 public class ControllerWsFactory extends ControllerFactory {
-
+	
+	private SeeVotesController seeVotesController;
+	
 	@Override
 	public AddThemeController getAddThemeController() {
 		// TODO Auto-generated method stub
@@ -23,8 +25,10 @@ public class ControllerWsFactory extends ControllerFactory {
 
 	@Override
 	public SeeVotesController getSeeVotesController() {
-		// TODO Auto-generated method stub
-		return null;
+		if (seeVotesController == null) {
+			seeVotesController = new SeeVotesControllerWs();
+        }
+        return seeVotesController;
 	}
 
 	@Override
