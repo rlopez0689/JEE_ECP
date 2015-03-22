@@ -11,6 +11,7 @@ public class ControllerWsFactory extends ControllerFactory {
 	
 	private SeeVotesController seeVotesController;
 	private AddThemeController addThemeController;
+	private DeleteThemeController deleteThemeController;
 	
 	@Override
 	public AddThemeController getAddThemeController() {
@@ -22,8 +23,10 @@ public class ControllerWsFactory extends ControllerFactory {
 
 	@Override
 	public DeleteThemeController getDeleteThemeController() {
-		// TODO Auto-generated method stub
-		return null;
+		if (deleteThemeController == null) {
+			deleteThemeController = new DeleteThemeControllerWs();
+        }
+        return deleteThemeController;
 	}
 
 	@Override

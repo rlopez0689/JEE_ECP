@@ -17,4 +17,9 @@ public class DeleteThemeControllerEJB extends ThemeControllerEJB implements Dele
 		return code.equals("666");
 	}
 
+	@Override
+	public boolean deleteTema(String code, int idTheme) {
+		return false;
+	}
+
 }

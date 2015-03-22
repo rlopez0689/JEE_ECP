@@ -15,7 +15,7 @@ public class DeleteThemeControllerWs extends ControllerWs implements DeleteTheme
 		return false;
 	}
 	
-	boolean deleteTema(String code, int idTheme){
+	public boolean deleteTema(String code, int idTheme){
 		WsManager wsManager = ControllerWs.buildWebServiceManager(ThemeUris.PATH_THEMES);
         wsManager.addPath(ThemeUris.PATH_ID);
         wsManager.addParams("code", code);
