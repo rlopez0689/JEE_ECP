@@ -63,6 +63,10 @@ public class WsManager {
     public void addMatrixParams(String name, String value) {
         this.webTarget = this.webTarget.matrixParam(name, value);
     }
+    
+    public void addObjectParam(String name, Object value){
+        this.webTarget = this.webTarget.resolveTemplate(name, value);
+    }
 
     public boolean create(Object entity) {
         this.response = this.webTarget.request().post(Entity.xml(entity));
@@ -129,5 +133,4 @@ public class WsManager {
         this.response.close();
         super.finalize();
     }
-
 }

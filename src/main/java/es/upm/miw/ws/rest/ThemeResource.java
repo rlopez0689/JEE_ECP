@@ -50,8 +50,8 @@ public class ThemeResource {
     @DELETE
     @Consumes(MediaType.APPLICATION_XML)
     @Produces({MediaType.APPLICATION_XML})
-    public Response delete(@PathParam("id") Integer id, @QueryParam("code") String code) {
-    	if(code=="666"){
+    public Response delete(@PathParam("id") Integer id, @QueryParam("code") Integer code) {
+    	if(code==666){
 	    	DaoFactory.getFactory().getThemeDao().deleteById(id);
 	        return Response.ok("Deleted").build();
         }

@@ -20,7 +20,7 @@ public class DeleteThemeControllerWs extends ControllerWs implements DeleteTheme
         wsManager.addPath(ThemeUris.PATH_ID);
         wsManager.addParams("code", code);
         Integer inte = new Integer(idTheme);
-        wsManager.addParams("id", inte.toString());
+        wsManager.addObjectParam("id", inte);
         return wsManager.delete();
 	}
 
