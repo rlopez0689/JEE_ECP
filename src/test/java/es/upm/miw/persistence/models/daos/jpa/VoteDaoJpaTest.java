@@ -22,6 +22,7 @@ import es.upm.miw.persistence.models.daos.VoteDao;
 import es.upm.miw.persistence.models.entities.Theme;
 import es.upm.miw.persistence.models.entities.Vote;
 import es.upm.miw.persistence.models.utils.EducationLevel;
+import es.upm.miw.persistence.models.utils.ThemeEducationAverage;
 
 public class VoteDaoJpaTest {
 	
@@ -130,5 +131,18 @@ public class VoteDaoJpaTest {
 		numberVotes = daoVote.getNumberOfVotes(vote_data.get(0).getTema());
 		assertEquals(numberVotes.intValue(), 0);
 		
+	}
+	
+	@Test
+	public void getAverageVotesByEducationLevel(){
+		List<ThemeEducationAverage> listEducation = daoVote.getAverageVotesByEducationLevel(vote_data.get(0).getTema());
+		for(ThemeEducationAverage edAv: listEducation){
+			if(edAv.getEd().equals(EducationLevel.MASTERSDEGREE))
+				assertEquals(edAv.getAverage(), 1.0, 1e-15);
+			else if(edAv.getEd().equals(EducationLevel.BACHELORDEGREE))
+				assertEquals(edAv.getAverage(), 4.0, 1e-15);
+			else
+				assertEquals(edAv.getAverage(), 0.0, 1e-15);
+		}
 	}
 }
