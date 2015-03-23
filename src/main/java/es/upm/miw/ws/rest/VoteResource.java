@@ -2,14 +2,19 @@ package es.upm.miw.ws.rest;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 import es.upm.miw.persistence.models.daos.DaoFactory;
+import es.upm.miw.persistence.models.daos.VoteDao;
 import es.upm.miw.persistence.models.entities.Theme;
+import es.upm.miw.persistence.models.entities.Vote;
 import es.upm.miw.persistence.models.utils.ThemeValoration;
 import es.upm.miw.ws.VoteUris;
 import es.upm.miw.ws.utils.ThemeValorationWrapper;
@@ -34,5 +39,14 @@ public class VoteResource {
 		themeValorationWrapper.setlistThemeValoration(selectedVotesList);
 		return Response.ok(themeValorationWrapper).build();
 	}
+	
+	@POST
+    @Consumes({MediaType.APPLICATION_XML})
+	@Produces({MediaType.APPLICATION_XML})
+    public Response create(Vote vote) {
+        VoteDao voteDao = DaoFactory.getFactory().getVoteDao();
+        voteDao.create(vote);
+        return Response.ok(vote).build();
+    }
 	
 }
