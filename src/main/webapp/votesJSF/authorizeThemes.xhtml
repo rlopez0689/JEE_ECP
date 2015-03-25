@@ -12,10 +12,11 @@
 	    </ui:define>   	
     	<ui:define name="content">
 	        <h:form>
+	        <h:outputText id="message" value="#{authorizeView.message}"></h:outputText>
 				<h:panelGrid id="grid" columns="2" cellpadding="5">
 					<p:outputLabel for="code" value="#{msgs.autohorize_code}" />
 					<p:inputText id="code" value="#{authorizeView.code}" required="true" />
-					<p:commandButton ajax="true" value="#{msgs.verify_code}" action="#{authorizeView.authorize}" />
+					<p:commandButton action="#{authorizeView.authorize}" id="command" update="message" ajax="true" value="#{msgs.verify_code}" />
 				</h:panelGrid>	
 			</h:form>
 		<br/><br/>

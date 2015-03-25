@@ -7,17 +7,13 @@ import es.upm.miw.web.controllers.DeleteThemeController;
 @ManagedBean
 public class AuthorizeView extends ViewBean {
 	
-	private String message="Prueba";
+	private String message;
 	
 	private String code;
 	
 	private String typeList;
 	
     public AuthorizeView() {
-    }
-
-    public String getMessage() {
-        return message;
     }
 	
     public String getCode() {
@@ -33,8 +29,10 @@ public class AuthorizeView extends ViewBean {
         	this.setTypeList("delete");
         	return "listThemes";
         }
-        else
+        else{
+        	this.message="Codigo incorrecto";
         	return "authorizeThemes";
+        }
     }
        
     public boolean isAuthorized(){
@@ -48,5 +46,13 @@ public class AuthorizeView extends ViewBean {
 
 	public void setTypeList(String typeList) {
 		this.typeList = typeList;
+	}
+
+	public String getMessage() {
+		return message;
+	}
+
+	public void setMessage(String message) {
+		this.message = message;
 	}
 }
