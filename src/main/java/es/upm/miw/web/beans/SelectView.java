@@ -12,17 +12,12 @@ import es.upm.miw.web.controllers.ThemeController;
 @ManagedBean
 @RequestScoped
 public class SelectView extends ViewBean{
-	private String message="Prueba";
 
     private List<Theme> themes;
     
     private String idTheme;
     
     public SelectView() {
-    }
-
-    public String getMessage() {
-        return message;
     }
 
     public List<Theme> getThemes() {

@@ -6,14 +6,8 @@ import es.upm.miw.web.controllers.DeleteThemeController;
 
 @ManagedBean
 public class DeleteView extends ViewBean {
-	
-	private String message="Prueba";
-    
+	    
     public DeleteView() {
-    }
-
-    public String getMessage() {
-        return message;
     }
     	
 	public String deleteTheme(String id) {

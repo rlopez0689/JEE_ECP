@@ -10,15 +10,10 @@ import es.upm.miw.web.controllers.ThemeController;
 
 @ManagedBean
 public class ListView extends ViewBean{
-	private String message="Prueba";
 
     private List<Theme> themes;
     
     public ListView() {
-    }
-
-    public String getMessage() {
-        return message;
     }
 
     public List<Theme> getThemes() {

@@ -21,7 +21,7 @@
 			Question: <input name="question" type="text" value="${aView.theme.question}" />
 		</p>
 		<p>
-			<input type="submit" value="Enviar" />
+			<input type="submit" value="Agregar" />
 		</p>
 	</form>
 	<p>

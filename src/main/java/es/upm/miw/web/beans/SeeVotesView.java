@@ -23,7 +23,6 @@ public class SeeVotesView extends ViewBean {
 	
 	@PostConstruct
 	public void procesar() {
-		System.out.println("Procesar");
 		SeeVotesController voteController = this.getControllerFactory().getSeeVotesController();
 		this.setgroupVotes(voteController.getEducationVotes());
 	}
